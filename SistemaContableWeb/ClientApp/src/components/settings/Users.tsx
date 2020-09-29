@@ -6,6 +6,7 @@ import {
     EditOutlined,
     DeleteOutlined
 } from '@ant-design/icons';
+import Axios, { AxiosError, AxiosResponse } from 'axios';
 
 export default () => {
 
@@ -61,12 +62,20 @@ export default () => {
         <Menu.Item icon={<DeleteOutlined translate />}>Eliminar</Menu.Item>
     </Menu>
 
+    const Login = () => {
+        Axios.post('https://localhost:44339/api/setting/login', {
+        usuario: 'gael',
+        pass: '1234'
+    })
+    .then((response:AxiosResponse) => console.log(response.data))
+}
+
     return <>
         <Card style={{ marginBottom: '8px' }}>
             <Row justify={'space-between'}>
                 <Input suffix={<SearchOutlined translate />} placeholder={'Buscar usuario'} style={{ width: '200px' }} />
                 <Button.Group>
-                    <Button type={'primary'} icon={<UserAddOutlined translate />}>Agregar</Button>
+                    <Button type={'primary'} icon={<UserAddOutlined translate />} onClick={Login}>Agregar</Button>
                 </Button.Group>
             </Row>
 

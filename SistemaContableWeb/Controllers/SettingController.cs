@@ -2,69 +2,43 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+//using System.Web.Http;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SistemaContableWeb.Context;
 using SistemaContableWeb.Models.Setting;
 
 namespace SistemaContableWeb.Controllers
 {
-    public class SettingController : Controller
+    [ApiController]
+    public class SettingController : ControllerBase
     {
-        // GET: SettingController
-        public SettingController()
-        { 
-        }
-           
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: SettingController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: SettingController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: SettingController/Create
+        [Route("api/setting/login")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Login(Login login)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        [HttpPost]
-        [EnableCors("AllowOrigin")]
-        public JsonResult Login(Login data)
-        {
-            try
-            {
-               
+                using(var ctx = new DataContext())
+                {
+                    if (login.Usuario == "gael")
+                    {
+                        var data = ctx.usuario.ToList();
+                        return Ok(data);
+                    }
+                    else
+                        return BadRequest("Usuario est◙ inactivo");
                 }
-                return new JsonResult("ok");
+                //return Ok(data);
+                //return BadRequest();
+                //return NoContent();
+
+                //return new JsonResult("ok");
             }
             catch (Exception ex)
             {
-                return new JsonResult("Error");
+                return BadRequest(ex.Message);
             }
-
-
         }
-        // POST: SettingController/Edit/5
-
     }
 }

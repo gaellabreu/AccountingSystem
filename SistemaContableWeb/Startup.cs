@@ -34,8 +34,8 @@ namespace SistemaContableWeb
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
-            services.AddDbContext<DataContext>(optionns =>
-            optionns.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            //services.AddDbContext<DataContext>(optionns =>
+            //optionns.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
