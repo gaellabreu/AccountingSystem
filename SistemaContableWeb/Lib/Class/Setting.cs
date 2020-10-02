@@ -17,10 +17,17 @@ namespace SistemaContableWeb.Lib.Class
             using (var context = new DataContext())
                 return context.usuario.Find(id);
         }
-        public List<usuario> ListUser()
+        public List<ListUser> ListUser()
         {
             using (var context = new DataContext())
-                return context.usuario.ToList();
+                return context.usuario.Select(s => new ListUser
+                {
+                    id = s.id,
+                    nombre = s.Nombre,
+                    tipo = s.tipo,
+                    usuario = s.Usuario,
+                    email = s.Email
+                }).ToList();
         }
         public void AddUser(usuario User)
         {
@@ -66,7 +73,7 @@ namespace SistemaContableWeb.Lib.Class
         public List<empresas> ListCompany()
         {
             using (var context = new DataContext())
-                return context.empresas.Where(x=> x.Deleted ==false).ToList();
+                return context.empresas.Where(x=> !x.Deleted).ToList();
         }
         public void AddCompany(empresas company)
         {
@@ -114,7 +121,7 @@ namespace SistemaContableWeb.Lib.Class
         public List<MaestroMoneda> ListCurrency()
         {
             using (var context = new DataContext())
-                return context.MaestroMoneda.Where(x => x.Inactivo == false).ToList();
+                return context.MaestroMoneda.Where(x => !x.Inactivo).ToList();
         }
         public void AddCurrency(MaestroMoneda Currency)
         {

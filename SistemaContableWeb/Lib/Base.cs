@@ -15,22 +15,22 @@ namespace SistemaContableWeb.Lib.Class
         public string query;
         //  public DataTable dtVenta;
       
-        public Boolean Login(Login login)
+        public bool Login(Login login)
         {
             using (var context = new DataContext())
                 return context.usuario.Any(x => x.Usuario == login.Usuario && x.pass == login.pass);
         }
-        public Boolean ExitsUser(string usuario)
+        public bool ExitsUser(string usuario)
         {
             using (var context = new DataContext())
                 return context.usuario.Any(x => x.Usuario == usuario);
         }
-        public Boolean ExitsCompany(string name)
+        public bool ExitsCompany(string name)
         {
             using (var context = new DataContext())
                 return context.empresas.Any(x => x.nombre == name);
         }
-        public Boolean ExitsCurrency(string IdMoneda)
+        public bool ExitsCurrency(string IdMoneda)
         {
             using (var context = new DataContext())
                 return context.MaestroMoneda.Any(x => x.IdMoneda == IdMoneda);

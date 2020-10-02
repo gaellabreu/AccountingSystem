@@ -25,10 +25,10 @@ namespace SistemaContableWeb.Controllers
         {
             try
             {
-                if (setting.Login(login) == true)
+                if (setting.Login(login))
                     return Ok();
-                else return BadRequest("Usuario y clave incorrecto");
-            
+                return BadRequest("Usuario y clave incorrecto");
+
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace SistemaContableWeb.Controllers
         {
             try
             {
-              var UserId=   setting.GetUser(id);
+                var UserId = setting.GetUser(id);
                 return Ok(UserId);
             }
             catch (Exception ex)
@@ -77,17 +77,18 @@ namespace SistemaContableWeb.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [Route("api/setting/CreateUser")]
+        [Route("api/setting/AddUser")]
         [HttpPost]
         public IActionResult AddUser(usuario usuario)
         {
             try
             {
-                if (setting.ExitsUser(usuario.Usuario) == false)
+                if (!setting.ExitsUser(usuario.Usuario))
                 {
                     setting.AddUser(usuario);
                     return Ok();
-                } else return BadRequest("Este usuario ya existe");
+                }
+                else return BadRequest("Este usuario ya existe");
 
 
             }
@@ -102,8 +103,8 @@ namespace SistemaContableWeb.Controllers
         {
             try
             {
-                    setting.DeleteUser(id);
-                    return Ok();
+                setting.DeleteUser(id);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -159,7 +160,7 @@ namespace SistemaContableWeb.Controllers
         {
             try
             {
-                if (setting.ExitsCompany(company.nombre) == false)
+                if (!setting.ExitsCompany(company.nombre))
                 {
                     setting.AddCompany(company);
                     return Ok();
@@ -234,7 +235,7 @@ namespace SistemaContableWeb.Controllers
         {
             try
             {
-                if (setting.ExitsCurrency(currency.IdMoneda) == false)
+                if (!setting.ExitsCurrency(currency.IdMoneda))
                 {
                     setting.AddCurrency(currency);
                     return Ok();
