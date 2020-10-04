@@ -1,5 +1,5 @@
-import { Button, Card, Col, Dropdown, Input, Menu, Row, Table, Typography } from 'antd'
-import React from 'react'
+import { Button, Card, Col, Dropdown, Input, Menu, notification, Row, Table, Typography } from 'antd'
+import React, { useEffect, useState } from 'react'
 import {
     UserAddOutlined,
     SearchOutlined,
@@ -7,29 +7,42 @@ import {
     DeleteOutlined
 } from '@ant-design/icons';
 import Axios, { AxiosError, AxiosResponse } from 'axios';
+import API from '../../utils/API';
+import Modal from 'antd/lib/modal/Modal';
 
-export default () => {
+export default (props:any) => {
 
-    const dataSource = [
-        {
-            key: '0',
-            username: 'gabreu',
-            name: 'Gael Leonel Abreu',
-            email: 'gael@mail.com'
-        },
-        {
-            key: '1',
-            username: 'lmartinez',
-            name: 'Luis Martinez',
-            email: 'luis@mail.com'
-        },
-        {
-            key: '2',
-            username: 'ctapia',
-            name: 'Carlos Tapia',
-            email: 'carlos@mail.com'
-        },
-    ];
+    const [users, setUsers] = useState(new Array)
+    const [search, setSearch] = useState('')
+    const [visible, setVisible] = useState(false)
+
+    useEffect(() => {
+        getUsers()
+    }, [])
+
+    const toggleModal = () => setVisible(!visible)
+
+    const onSearch = (e:any) => setSearch(e.target.value)
+    // const dataSource = [
+    //     {
+    //         key: '0',
+    //         username: 'gabreu',
+    //         name: 'Gael Leonel Abreu',
+    //         email: 'gael@mail.com'
+    //     },
+    //     {
+    //         key: '1',
+    //         username: 'lmartinez',
+    //         name: 'Luis Martinez',
+    //         email: 'luis@mail.com'
+    //     },
+    //     {
+    //         key: '2',
+    //         username: 'ctapia',
+    //         name: 'Carlos Tapia',
+    //         email: 'carlos@mail.com'
+    //     },
+    // ];
 
     const columns = [
         {
@@ -42,13 +55,18 @@ export default () => {
         },
         {
             title: 'Usuario',
-            dataIndex: 'username',
-            key: 'username',
+            dataIndex: 'usuario',
+            key: 'usurio',
+        },
+        {
+            title: 'Rol',
+            dataIndex: 'tipo',
+            key: 'tipo',
         },
         {
             title: 'Nombre',
-            dataIndex: 'name',
-            key: 'name',
+            dataIndex: 'nombre',
+            key: 'nombre',
         },
         {
             title: 'Email',
@@ -57,31 +75,48 @@ export default () => {
         },
     ];
 
+    const getUsers = () => {
+        API.get('setting/listuser')
+        .then((response:AxiosResponse) => setUsers([...response.data]))
+        .catch((err:AxiosError) => notification.error({
+            message: 'ERROR',
+            description: ''
+        }))
+    }
     const overlay = () => <Menu>
         <Menu.Item icon={<EditOutlined translate />}>Editar</Menu.Item>
         <Menu.Item icon={<DeleteOutlined translate />}>Eliminar</Menu.Item>
     </Menu>
 
-    const Login = () => {
-        Axios.post('https://localhost:44339/api/setting/login', {
-        usuario: 'gael',
-        pass: '1234'
-    })
-    .then((response:AxiosResponse) => console.log(response.data))
-}
-
     return <>
         <Card style={{ marginBottom: '8px' }}>
             <Row justify={'space-between'}>
-                <Input suffix={<SearchOutlined translate />} placeholder={'Buscar usuario'} style={{ width: '200px' }} />
+                <Input value={search} onChange={onSearch} suffix={<SearchOutlined translate />} placeholder={'Buscar usuario'} style={{ width: '200px' }} />
                 <Button.Group>
-                    <Button type={'primary'} icon={<UserAddOutlined translate />} onClick={Login}>Agregar</Button>
+                    <Button type={'primary'} icon={<UserAddOutlined translate />} onClick={toggleModal}>Agregar</Button>
                 </Button.Group>
             </Row>
 
         </Card>
         <div className="site-layout-background" style={{ padding: 12, minHeight: '50%', maxHeight: '50%' }}>
-            <Table size={'small'} dataSource={dataSource} columns={columns} />
+            <Table size={'small'} dataSource={users.filter((user:any) => user.usuario.toLowerCase().includes(search.toLowerCase()) || user.nombre.toLowerCase().includes(search.toLowerCase()))} columns={columns} />
         </div>
+
+        <Modal
+        visible={visible}
+        onCancel={toggleModal}>
+            <Typography.Text>Carlos Tapia</Typography.Text>
+        </Modal>
     </>
+}
+
+export class mycomp extends React.Component<any,any>{
+
+    componentDidMount(){
+
+    }
+
+    componentDidUpdate(){
+
+    }
 }
