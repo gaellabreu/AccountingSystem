@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SistemaContableWeb.Lib.Class
 {
-    public class Setting: Base
+    public class Setting : Base
     {
         //*****************************************SECCION DE USUARIO******************************************************
         //*****************************************************************************************************************
@@ -52,11 +52,10 @@ namespace SistemaContableWeb.Lib.Class
             using (var context = new DataContext())
             {
                 var user = context.usuario.Find(Usuario.id);
-                user.pass = Usuario.pass;
                 user.Nombre = Usuario.Nombre;
                 user.tipo = Usuario.tipo;
                 user.Email = Usuario.Email;
-                user.Zicop = Usuario.Zicop;
+          
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
             }
@@ -73,7 +72,7 @@ namespace SistemaContableWeb.Lib.Class
         public List<empresas> ListCompany()
         {
             using (var context = new DataContext())
-                return context.empresas.Where(x=> !x.Deleted).ToList();
+                return context.empresas.Where(x => !x.Deleted).ToList();
         }
         public void AddCompany(empresas company)
         {

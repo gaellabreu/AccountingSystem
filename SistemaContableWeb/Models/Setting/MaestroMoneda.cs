@@ -11,11 +11,9 @@ namespace SistemaContableWeb.Models.Setting
     {
         [Key]
         public int id { get; set; }
-        [Required]
-        [Column(TypeName = "varchar(10)")]
+ 
         public string IdMoneda { get; set; }
 
-        [Column(TypeName = "varchar(40)")]
         public string Descripcion { get; set; }
 
         public Boolean Inactivo { get; set; }
