@@ -111,15 +111,14 @@ import ManageCurrency from "./modals/ManageCurrency";
     const overlay = (record: any) => (
       <Menu>
         <Menu.Item
-          icon={<EditOutlined translate />}
-          onClick={() => editCurrency(record)}
-        >
+          onClick={() => editCurrency(record)}>
+          <EditOutlined translate />
           Editar
         </Menu.Item>
         <Menu.Item 
-            icon={<DeleteOutlined translate />}
             onClick={() => deleteCurrency(record.id)}
         >
+          <DeleteOutlined translate />
             Eliminar</Menu.Item>
       </Menu>
     );

@@ -77,6 +77,20 @@ namespace SistemaContableWeb.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [Route("api/setting/SearchUsers")]
+        [HttpGet]
+        public IActionResult SearchUsers(string search)
+        {
+            try
+            {
+                var list = setting.SearchUsers(search);
+                return Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         [Route("api/setting/AddUser")]
         [HttpPost]
         public IActionResult AddUser(usuario usuario)
@@ -273,6 +287,53 @@ namespace SistemaContableWeb.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+
+
+        //PERFILES//
+
+        [Route("api/setting/getprofiles")]
+        [HttpGet]
+        public IActionResult Getprofiles()
+        {
+            try
+            {
+                return Ok(setting.getProfiles());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("api/setting/getPermissions")]
+        [HttpGet]
+        public IActionResult GetPermissions(int empresa, int usuario)
+        {
+            try
+            {
+                return Ok(setting.getPermissions(empresa, usuario));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
+        }
+
+        [Route("api/setting/editPermissions")]
+        [HttpPost]
+        public IActionResult EditPermissions(List<PerfilUsuario> perfilUsuarios)
+        {
+            try
+            {
+                setting.EditPermissions(perfilUsuarios);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
             }
         }
     }

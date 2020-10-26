@@ -107,7 +107,7 @@ export default (props: any) => {
               message: "USUARIO",
               description: "Usuario eliminado correctamente.",
             });
-           
+
           })
           .catch(() => {
             notification.success({
@@ -121,15 +121,15 @@ export default (props: any) => {
   const overlay = (record: any) => (
     <Menu>
       <Menu.Item
-        icon={<EditOutlined translate />}
         onClick={() => editUser(record)}
       >
+        <EditOutlined translate />
         Editar
       </Menu.Item>
       <Menu.Item
-        icon={<DeleteOutlined translate />}
         onClick={() => deleteUser(record.id)}
       >
+        <DeleteOutlined translate />
         Eliminar
       </Menu.Item>
     </Menu>

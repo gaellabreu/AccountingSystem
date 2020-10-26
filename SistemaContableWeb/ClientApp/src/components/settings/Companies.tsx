@@ -13,10 +13,10 @@ import {
 } from "antd";
 import React, { useEffect, useState } from "react";
 import {
-  UserAddOutlined,
-  SearchOutlined,
   EditOutlined,
   DeleteOutlined,
+  SearchOutlined,
+  UserAddOutlined
 } from "@ant-design/icons";
 import API from "utils/API";
 import { AxiosError, AxiosResponse } from "axios";
@@ -111,7 +111,7 @@ export default () => {
               message: "EMPRESA",
               description: "empresa eliminada correctamente.",
             });
-         
+
           })
           .catch(() => {
             notification.success({
@@ -125,15 +125,14 @@ export default () => {
   const overlay = (record: any) => (
     <Menu>
       <Menu.Item
-        icon={<EditOutlined translate />}
         onClick={() => editCompany(record)}
       >
+        <EditOutlined translate />
         Editar
       </Menu.Item>
-      <Menu.Item 
-          icon={<DeleteOutlined translate />}
-          onClick={() => deleteCompany(record.id)}
-      >
+      <Menu.Item
+        onClick={() => deleteCompany(record.id)}
+      ><DeleteOutlined translate />
           Eliminar</Menu.Item>
     </Menu>
   );

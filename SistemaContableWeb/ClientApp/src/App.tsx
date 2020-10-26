@@ -33,11 +33,11 @@ export default () => {
                     margin: '16px'
                 }} />
                 <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                    <SubMenu key="sub1" icon={<SettingOutlined translate />} title="Configuración">
-                        <Menu.Item key="1" onClick={() => history.push('/users')} icon={<UserOutlined translate/>}>Usuarios</Menu.Item>
-                        <Menu.Item key="2" onClick={() => history.push('/companies')} icon={<BankOutlined translate/>}>Empresas</Menu.Item>
-                        <Menu.Item key="3" onClick={() => history.push('/profiles')} icon={<BranchesOutlined translate/> }>Perfiles</Menu.Item>
-                        <Menu.Item key="4" onClick={() => history.push('/multicurrency')} icon={<DollarOutlined translate/>}>Multimoneda</Menu.Item>
+                    <SubMenu key="sub1" title="Configuración">
+                        <Menu.Item key="1" onClick={() => history.push('/users')}><UserOutlined translate />Usuarios</Menu.Item>
+                        <Menu.Item key="2" onClick={() => history.push('/companies')}><BankOutlined translate />Empresas</Menu.Item>
+                        <Menu.Item key="3" onClick={() => history.push('/profiles')}><BranchesOutlined translate />Perfiles</Menu.Item>
+                        <Menu.Item key="4" onClick={() => history.push('/multicurrency')}><DollarOutlined translate />Multimoneda</Menu.Item>
                     </SubMenu>
                 </Menu>
             </Sider>

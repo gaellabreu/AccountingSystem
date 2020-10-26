@@ -22,8 +22,10 @@ namespace SistemaContableWeb.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //optionsBuilder
+            //    .UseSqlServer(@"Server=DESKTOP-MKAB65N\GP2013;Database=CONT;Persist Security Info=True;User ID=sa;Password=Soporte100;MultipleActiveResultSets=True;");
             optionsBuilder
-                .UseSqlServer(@"Server=DESKTOP-MKAB65N\GP2013;Database=CONT;Persist Security Info=True;User ID=sa;Password=Soporte100;MultipleActiveResultSets=True;");
+                .UseSqlServer(@"Server=DESKTOP-O2E9PLC;Database=CONT;Persist Security Info=True;User ID=sa;Password=12345678;MultipleActiveResultSets=True;");
         }
     }
 }

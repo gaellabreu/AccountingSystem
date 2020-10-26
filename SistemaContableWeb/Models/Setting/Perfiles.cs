@@ -11,14 +11,6 @@ namespace SistemaContableWeb.Models.Setting
     {
         [Key]
         public int id { get; set; }
-        [Required]
-        [Column(TypeName = "varchar(30)")]
         public string Form { get; set; }
-
-        private Boolean Editar = false;
-        private Boolean Agregar = false;
-        private Boolean Eliminar = false;
-        private Boolean Vista = false;
-        private Boolean Listado = false;
     }
 }

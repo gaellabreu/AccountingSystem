@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using SistemaContableWeb.Models.Setting;
 using SistemaContableWeb.Context;
 using Microsoft.EntityFrameworkCore;
+using SistemaContableWeb.DTO;
 
 namespace SistemaContableWeb.Lib.Class
 {
@@ -28,6 +29,16 @@ namespace SistemaContableWeb.Lib.Class
                     usuario = s.Usuario,
                     email = s.Email
                 }).ToList();
+        }
+        public List<Option> SearchUsers(string s)
+        {
+            using (var context = new DataContext())
+                return context.usuario.Where(x => x.Usuario.ToLower().Contains(s.ToLower()))
+                    .Select(s => new Option
+                    {
+                        id = s.id,
+                        value = s.Usuario,
+                    }).ToList();
         }
         public void AddUser(usuario User)
         {
@@ -55,11 +66,12 @@ namespace SistemaContableWeb.Lib.Class
                 user.Nombre = Usuario.Nombre;
                 user.tipo = Usuario.tipo;
                 user.Email = Usuario.Email;
-          
+
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }
+
 
         //*****************************************SECCION DE EMPRESA******************************************************
         //*****************************************************************************************************************
@@ -149,6 +161,52 @@ namespace SistemaContableWeb.Lib.Class
                 curr.Descripcion = Currency.Descripcion;
                 context.Entry(curr).State = EntityState.Modified;
                 context.SaveChanges();
+            }
+        }
+
+        //PERFILES//
+
+        public List<Perfiles> getProfiles()
+        {
+            using (var ctx = new DataContext())
+                return ctx.Perfiles.ToList();
+        }
+
+        public List<PerfilUsuario> getPermissions(int e, int u)
+        {
+            using (var ctx = new DataContext())
+            {
+                var data = ctx.Set<PerfilUsuario>().FromSqlRaw("[dbo].[sp_Pefil_UserId] @IdUsuario = {0}, @IdEmpresa = {1}", u, e).ToList();
+                return data;
+            }
+        }
+
+        public void EditPermissions(List<PerfilUsuario> p)
+        {
+            using (var ctx = new DataContext())
+            {
+                var perfiles = p.Select(x => x.IdPerfiles);
+                var usuarios = p.Select(x => x.IdUsuario);
+                var empresas = p.Select(x => x.IdEmpresa);
+
+                var created = ctx.PerfilUsuario.Where(x => perfiles.Contains(x.IdPerfiles) && usuarios.Contains(x.IdUsuario) && empresas.Contains(x.IdEmpresa)).AsNoTracking().ToList();
+
+                var created_id = created.Select(x => x.id);
+
+                var correct_ids = p.Select(x => x.id).Intersect(created_id).ToList();
+                var data = p.Where(x => correct_ids.Contains(x.id)).ToList();
+                if (data.Any())
+                    ctx.UpdateRange(data);
+
+                var _data = p.Where(x => !correct_ids.Contains(x.id));
+                foreach (var d in _data)
+                {
+                    d.id = 0;
+                }
+                if(_data.Any())
+                    ctx.AddRange(_data);
+
+                ctx.SaveChanges();
             }
         }
     }
