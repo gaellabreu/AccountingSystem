@@ -25,7 +25,7 @@ namespace SistemaContableWeb.Context
             //optionsBuilder
             //    .UseSqlServer(@"Server=DESKTOP-MKAB65N\GP2013;Database=CONT;Persist Security Info=True;User ID=sa;Password=Soporte100;MultipleActiveResultSets=True;");
             optionsBuilder
-                .UseSqlServer(@"Server=DESKTOP-O2E9PLC;Database=CONT;Persist Security Info=True;User ID=sa;Password=12345678;MultipleActiveResultSets=True;");
+                .UseMySQL(@"Server=localhost;Port=3306;Database=CONT;Uid=root;Pwd=G@el155931394;");
         }
     }
 }

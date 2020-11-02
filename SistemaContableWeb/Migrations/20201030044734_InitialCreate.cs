@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace SistemaContableWeb.Migrations
 {
@@ -11,10 +13,11 @@ namespace SistemaContableWeb.Migrations
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     IdUsuario = table.Column<int>(nullable: false),
                     IdEmpresa = table.Column<int>(nullable: false),
-                    usurio = table.Column<string>(type: "varchar(50)", nullable: true),
+                    Fecha = table.Column<DateTime>(nullable: false),
+                    FechaModif = table.Column<DateTime>(nullable: false),
                     activo = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -27,7 +30,7 @@ namespace SistemaContableWeb.Migrations
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     IDMonedaAcc = table.Column<int>(nullable: false),
                     IdEmpresa = table.Column<int>(nullable: false),
                     UsuarioModif = table.Column<string>(type: "varchar(50)", nullable: true)
@@ -42,12 +45,12 @@ namespace SistemaContableWeb.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    nombre = table.Column<string>(type: "varchar(70)", nullable: false),
-                    telefono = table.Column<string>(type: "varchar(15)", nullable: true),
-                    celular = table.Column<string>(type: "varchar(15)", nullable: true),
-                    contacto = table.Column<string>(type: "varchar(15)", nullable: true),
-                    RNC = table.Column<string>(type: "varchar(11)", nullable: false),
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    nombre = table.Column<string>(nullable: true),
+                    telefono = table.Column<string>(nullable: true),
+                    celular = table.Column<string>(nullable: true),
+                    contacto = table.Column<string>(nullable: true),
+                    RNC = table.Column<string>(nullable: true),
                     direccion = table.Column<string>(nullable: true),
                     ciudad = table.Column<string>(nullable: true),
                     Provincia = table.Column<string>(nullable: true),
@@ -63,9 +66,9 @@ namespace SistemaContableWeb.Migrations
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdMoneda = table.Column<string>(type: "varchar(10)", nullable: false),
-                    Descripcion = table.Column<string>(type: "varchar(40)", nullable: true),
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    IdMoneda = table.Column<string>(nullable: true),
+                    Descripcion = table.Column<string>(nullable: true),
                     Inactivo = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -78,7 +81,7 @@ namespace SistemaContableWeb.Migrations
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     IdEmpresa = table.Column<int>(nullable: false),
                     GeneraContabilidad_Ventas = table.Column<bool>(nullable: false),
                     GeneraContabilidad_Compra = table.Column<bool>(nullable: false),
@@ -101,8 +104,8 @@ namespace SistemaContableWeb.Migrations
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Form = table.Column<string>(type: "varchar(30)", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Form = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -114,7 +117,7 @@ namespace SistemaContableWeb.Migrations
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     IdPerfiles = table.Column<int>(nullable: false),
                     IdUsuario = table.Column<int>(nullable: false),
                     IdEmpresa = table.Column<int>(nullable: false),
@@ -123,7 +126,7 @@ namespace SistemaContableWeb.Migrations
                     Eliminar = table.Column<bool>(nullable: false),
                     Vista = table.Column<bool>(nullable: false),
                     Listado = table.Column<bool>(nullable: false),
-                    usuarioMofi = table.Column<string>(type: "varchar(50)", nullable: true)
+                    usuarioMofi = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -135,13 +138,12 @@ namespace SistemaContableWeb.Migrations
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Usuario = table.Column<string>(type: "varchar(50)", nullable: false),
-                    pass = table.Column<string>(type: "varchar(40)", nullable: false),
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Usuario = table.Column<string>(nullable: true),
+                    pass = table.Column<string>(nullable: true),
                     tipo = table.Column<string>(nullable: true),
-                    Nombre = table.Column<string>(type: "varchar(60)", nullable: false),
-                    Email = table.Column<string>(nullable: true),
-                    Zicop = table.Column<string>(nullable: true)
+                    Nombre = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

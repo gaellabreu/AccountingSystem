@@ -176,7 +176,7 @@ namespace SistemaContableWeb.Lib.Class
         {
             using (var ctx = new DataContext())
             {
-                var data = ctx.Set<PerfilUsuario>().FromSqlRaw("[dbo].[sp_Pefil_UserId] @IdUsuario = {0}, @IdEmpresa = {1}", u, e).ToList();
+                var data = ctx.Set<PerfilUsuario>().FromSqlRaw("CALL sp_Pefil_UserId ({0},{1})", u, e).ToList();
                 return data;
             }
         }
@@ -191,21 +191,71 @@ namespace SistemaContableWeb.Lib.Class
 
                 var created = ctx.PerfilUsuario.Where(x => perfiles.Contains(x.IdPerfiles) && usuarios.Contains(x.IdUsuario) && empresas.Contains(x.IdEmpresa)).AsNoTracking().ToList();
 
-                var created_id = created.Select(x => x.id);
+                var created_id = created.Select(x => x.Id);
 
-                var correct_ids = p.Select(x => x.id).Intersect(created_id).ToList();
-                var data = p.Where(x => correct_ids.Contains(x.id)).ToList();
+                var correct_ids = p.Select(x => x.Id).Intersect(created_id).ToList();
+                var data = p.Where(x => correct_ids.Contains(x.Id)).ToList();
                 if (data.Any())
                     ctx.UpdateRange(data);
 
-                var _data = p.Where(x => !correct_ids.Contains(x.id));
+                var _data = p.Where(x => !correct_ids.Contains(x.Id));
                 foreach (var d in _data)
                 {
-                    d.id = 0;
+                    d.Id = 0;
                 }
-                if(_data.Any())
+                if (_data.Any())
                     ctx.AddRange(_data);
 
+                ctx.SaveChanges();
+            }
+        }
+
+        //ACCESO
+
+        public List<Access> GetCompaniesByUser(int id)
+        {
+            using (var ctx = new DataContext())
+            {
+                var companies = ctx.empresas.Select(x => new Access
+                {
+                    id = x.Id,
+                    name = x.nombre,
+                    assigned = false
+                }).ToList();
+
+                var userAccess = ctx.acceso.Where(x => x.IdUsuario == id).ToList();
+
+                companies.ForEach((c) =>
+                {
+                    c.assigned = userAccess.Select(x => x.IdEmpresa).Contains(c.id) && userAccess.Find(x => x.IdEmpresa == c.id).activo;
+                });
+
+                return companies;
+            }
+        }
+
+        public void SaveAccess(List<acceso> accs)
+        {
+
+            using (var ctx = new DataContext())
+            {
+                accs.ForEach((a) =>
+                {
+                    var exists = ctx.acceso.Any(x => x.IdEmpresa == a.IdEmpresa && x.IdUsuario == a.IdUsuario);
+                    if (!exists)
+                    {
+                        a.Fecha = DateTime.Now;
+                        a.FechaModif = DateTime.Now;
+                        ctx.Add(a);
+                    }
+                    else
+                    {
+                        var acc = ctx.acceso.FirstOrDefault(x => x.IdEmpresa == a.IdEmpresa && x.IdUsuario == a.IdUsuario);
+                        a.FechaModif = DateTime.Now;
+                        acc.activo = a.activo;
+                        ctx.Update(acc);
+                    }
+                });
                 ctx.SaveChanges();
             }
         }

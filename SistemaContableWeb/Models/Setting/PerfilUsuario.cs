@@ -10,7 +10,7 @@ namespace SistemaContableWeb.Models.Setting
     public class PerfilUsuario
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
         public int IdPerfiles { get; set; }     
         public int IdUsuario { get; set; }
         public int IdEmpresa { get; set; }

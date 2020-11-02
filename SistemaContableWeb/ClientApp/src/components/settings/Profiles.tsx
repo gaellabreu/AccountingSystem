@@ -1,10 +1,12 @@
 import { AutoComplete, Button, Card, Checkbox, Col, Dropdown, Input, Menu, notification, Row, Select, Table, Typography } from 'antd'
 import React, { useEffect, useState } from 'react'
 import {
-    SaveOutlined
+    SaveFilled,
+    BuildFilled
 } from '@ant-design/icons';
 import { AxiosError, AxiosResponse } from 'axios';
 import API from 'utils/API';
+import AssignCompanies from './modals/AssignCompanies';
 
 export default () => {
 
@@ -14,11 +16,14 @@ export default () => {
     const [user, setUser] = useState<any>()
     const [permissions, setPermissions] = useState(new Array)
     const [profiles, setProfiles] = useState(new Array)
+    const [assignCompanies, setAssignCompanies] = useState(false)
 
     useEffect(() => {
         getCompanies()
         GetProfiles()
     }, [])
+
+    const toggleAssignCompanies = () => setAssignCompanies(!assignCompanies)
 
     const getCompanies = () =>
         API.get("setting/listcompany")
@@ -163,7 +168,8 @@ export default () => {
                 </Row>
 
                 <Button.Group>
-                    <Button type={'primary'} icon={<SaveOutlined translate />} onClick={savePermissions}>Guardar</Button>
+                    <Button type={'primary'} icon={<BuildFilled translate />} onClick={toggleAssignCompanies}>Asignar accesos</Button>
+                    <Button type={'primary'} icon={<SaveFilled translate />} onClick={savePermissions}>Guardaar</Button>
                 </Button.Group>
             </Row>
 
@@ -171,5 +177,10 @@ export default () => {
         <div className="site-layout-background" style={{ padding: 12, minHeight: '50%', maxHeight: '50%' }}>
             <Table size={'small'} dataSource={permissions} columns={columns} />
         </div>
+
+        <AssignCompanies
+            visible={assignCompanies && user}
+            close={toggleAssignCompanies}
+            userId={user} />
     </>
 }

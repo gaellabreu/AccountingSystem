@@ -11,15 +11,10 @@ namespace SistemaContableWeb.Models.Setting
     {
         [Key]
         public int id { get; set; }
-        [Required]
         public int IdUsuario { get; set; }
-
-        [Required]
         public int IdEmpresa { get; set; }
-        [Column(TypeName = "varchar(50)")]
-        public string usurio { get; set; }
-        public DateTime Fecha = DateTime.Now.Date;
-        public DateTime FechaModif = DateTime.Now.Date;
-        public Boolean activo { get; set; }
+        public DateTime Fecha { get; set; }
+        public DateTime FechaModif { get; set; }
+        public bool activo { get; set; }
     }
 }

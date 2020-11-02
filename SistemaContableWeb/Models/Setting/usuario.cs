@@ -15,7 +15,6 @@ namespace SistemaContableWeb.Models.Setting
         public string  pass { get; set; }
         public string tipo { get; set; }
         public string Nombre { get; set; }
-        public string Email { get; set; } 
- 
+        public string Email { get; set; }
     }
 }

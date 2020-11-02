@@ -1,14 +1,6 @@
-import { Button, Checkbox, Divider, Dropdown, Menu, Select } from 'antd'
+import { Select } from 'antd'
 import Modal from 'antd/lib/modal/Modal'
 import React from 'react'
-import {
-    FileAddOutlined,
-    SearchOutlined,
-    EditOutlined,
-    DeleteOutlined,
-    DollarOutlined,
-    SettingOutlined
-} from '@ant-design/icons';
 
 export default (props: any) => {
 

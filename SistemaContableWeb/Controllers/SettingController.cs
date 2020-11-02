@@ -336,5 +336,38 @@ namespace SistemaContableWeb.Controllers
                 return BadRequest(ex.InnerException.Message);
             }
         }
+
+        //ACCESOS
+
+        [Route("api/setting/GetCompaniesByUser")]
+        [HttpGet]
+        public IActionResult GetCompaniesByUser(int userId)
+        {
+            try
+            {
+                return Ok(setting.GetCompaniesByUser(userId));
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, ex.InnerException);
+            }
+        }
+
+        [Route("api/setting/SaveAccess")]
+        [HttpPost]
+        public IActionResult SaveAccess(List<acceso> acceso)
+        {
+            try
+            {
+                setting.SaveAccess(acceso);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, ex.InnerException);
+            }
+        }
     }
 }
