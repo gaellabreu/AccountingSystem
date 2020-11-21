@@ -5,7 +5,10 @@ import './app.css'
 import { Col, Layout, Menu, Row, Typography } from 'antd';
 import {
     SettingOutlined,
-    UserOutlined
+    UserOutlined,
+    BankOutlined,
+    BranchesOutlined,
+    DollarOutlined
 } from '@ant-design/icons';
 import Users from './components/settings/Users';
 import Companies from './components/settings/Companies';
@@ -30,11 +33,11 @@ export default () => {
                     margin: '16px'
                 }} />
                 <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                    <SubMenu key="sub1" icon={<SettingOutlined translate />} title="Configuración">
-                        <Menu.Item key="1" onClick={() => history.push('/users')}>Usuarios</Menu.Item>
-                        <Menu.Item key="2" onClick={() => history.push('/companies')}>Empresas</Menu.Item>
-                        <Menu.Item key="3" onClick={() => history.push('/profiles')}>Perfiles</Menu.Item>
-                        <Menu.Item key="4" onClick={() => history.push('/multicurrency')}>Multimoneda</Menu.Item>
+                    <SubMenu key="sub1" title="Configuración">
+                        <Menu.Item key="1" onClick={() => history.push('/users')}><UserOutlined translate />Usuarios</Menu.Item>
+                        <Menu.Item key="2" onClick={() => history.push('/companies')}><BankOutlined translate />Empresas</Menu.Item>
+                        <Menu.Item key="3" onClick={() => history.push('/profiles')}><BranchesOutlined translate />Perfiles</Menu.Item>
+                        <Menu.Item key="4" onClick={() => history.push('/multicurrency')}><DollarOutlined translate />Multimoneda</Menu.Item>
                     </SubMenu>
                 </Menu>
             </Sider>

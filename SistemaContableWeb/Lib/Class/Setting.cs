@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using SistemaContableWeb.Models.Setting;
 using SistemaContableWeb.Context;
 using Microsoft.EntityFrameworkCore;
+using SistemaContableWeb.DTO;
 
 namespace SistemaContableWeb.Lib.Class
 {
-    public class Setting: Base
+    public class Setting : Base
     {
         //*****************************************SECCION DE USUARIO******************************************************
         //*****************************************************************************************************************
@@ -28,6 +29,16 @@ namespace SistemaContableWeb.Lib.Class
                     usuario = s.Usuario,
                     email = s.Email
                 }).ToList();
+        }
+        public List<Option> SearchUsers(string s)
+        {
+            using (var context = new DataContext())
+                return context.usuario.Where(x => x.Usuario.ToLower().Contains(s.ToLower()))
+                    .Select(s => new Option
+                    {
+                        id = s.id,
+                        value = s.Usuario,
+                    }).ToList();
         }
         public void AddUser(usuario User)
         {
@@ -52,19 +63,23 @@ namespace SistemaContableWeb.Lib.Class
             using (var context = new DataContext())
             {
                 var user = context.usuario.Find(Usuario.id);
-                user.pass = Usuario.pass;
                 user.Nombre = Usuario.Nombre;
                 user.tipo = Usuario.tipo;
                 user.Email = Usuario.Email;
-                user.Zicop = Usuario.Zicop;
+
                 context.Entry(user).State = EntityState.Modified;
                 context.SaveChanges();
             }
         }
 
+
         //*****************************************SECCION DE EMPRESA******************************************************
         //*****************************************************************************************************************
-
+        public bool DatabaseValidity(string dbName)
+        {
+            using (var context = new DataContext())
+                return context.empresas.Any(x => x.dbName == dbName);
+        }
         public empresas GetCompany(int id)
         {
             using (var context = new DataContext())
@@ -73,7 +88,7 @@ namespace SistemaContableWeb.Lib.Class
         public List<empresas> ListCompany()
         {
             using (var context = new DataContext())
-                return context.empresas.Where(x=> !x.Deleted).ToList();
+                return context.empresas.Where(x => !x.Deleted).ToList();
         }
         public void AddCompany(empresas company)
         {
@@ -150,6 +165,102 @@ namespace SistemaContableWeb.Lib.Class
                 curr.Descripcion = Currency.Descripcion;
                 context.Entry(curr).State = EntityState.Modified;
                 context.SaveChanges();
+            }
+        }
+
+        //PERFILES//
+
+        public List<Perfiles> getProfiles()
+        {
+            using (var ctx = new DataContext())
+                return ctx.Perfiles.ToList();
+        }
+
+        public List<PerfilUsuario> getPermissions(int e, int u)
+        {
+            using (var ctx = new DataContext())
+            {
+                var data = ctx.Set<PerfilUsuario>().FromSqlRaw("CALL sp_Pefil_UserId ({0},{1})", u, e).ToList();
+                return data;
+            }
+        }
+
+        public void EditPermissions(List<PerfilUsuario> p)
+        {
+            using (var ctx = new DataContext())
+            {
+                var perfiles = p.Select(x => x.IdPerfiles);
+                var usuarios = p.Select(x => x.IdUsuario);
+                var empresas = p.Select(x => x.IdEmpresa);
+
+                var created = ctx.PerfilUsuario.Where(x => perfiles.Contains(x.IdPerfiles) && usuarios.Contains(x.IdUsuario) && empresas.Contains(x.IdEmpresa)).AsNoTracking().ToList();
+
+                var created_id = created.Select(x => x.Id);
+
+                var correct_ids = p.Select(x => x.Id).Intersect(created_id).ToList();
+                var data = p.Where(x => correct_ids.Contains(x.Id)).ToList();
+                if (data.Any())
+                    ctx.UpdateRange(data);
+
+                var _data = p.Where(x => !correct_ids.Contains(x.Id));
+                foreach (var d in _data)
+                {
+                    d.Id = 0;
+                }
+                if (_data.Any())
+                    ctx.AddRange(_data);
+
+                ctx.SaveChanges();
+            }
+        }
+
+        //ACCESO
+
+        public List<Access> GetCompaniesByUser(int id)
+        {
+            using (var ctx = new DataContext())
+            {
+                var companies = ctx.empresas.Select(x => new Access
+                {
+                    id = x.Id,
+                    name = x.nombre,
+                    assigned = false
+                }).ToList();
+
+                var userAccess = ctx.acceso.Where(x => x.IdUsuario == id).ToList();
+
+                companies.ForEach((c) =>
+                {
+                    c.assigned = userAccess.Select(x => x.IdEmpresa).Contains(c.id) && userAccess.Find(x => x.IdEmpresa == c.id).activo;
+                });
+
+                return companies;
+            }
+        }
+
+        public void SaveAccess(List<acceso> accs)
+        {
+
+            using (var ctx = new DataContext())
+            {
+                accs.ForEach((a) =>
+                {
+                    var exists = ctx.acceso.Any(x => x.IdEmpresa == a.IdEmpresa && x.IdUsuario == a.IdUsuario);
+                    if (!exists)
+                    {
+                        a.Fecha = DateTime.Now;
+                        a.FechaModif = DateTime.Now;
+                        ctx.Add(a);
+                    }
+                    else
+                    {
+                        var acc = ctx.acceso.FirstOrDefault(x => x.IdEmpresa == a.IdEmpresa && x.IdUsuario == a.IdUsuario);
+                        a.FechaModif = DateTime.Now;
+                        acc.activo = a.activo;
+                        ctx.Update(acc);
+                    }
+                });
+                ctx.SaveChanges();
             }
         }
     }

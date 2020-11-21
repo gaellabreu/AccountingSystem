@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2019",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "baseUrl": "src",
     "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -11,14 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
-    "lib": [
-      "es2015",
-      "dom"
-    ],
-    "skipLibCheck": false
+    "jsx": "preserve"
   },
   "include": [
-    "src"
+    "src",
   ]
 }

@@ -12,11 +12,6 @@ import {
 
 export default (props: any) => {
 
-    const overlay = () => <Menu>
-        <Menu.Item icon={<EditOutlined translate />}>Editar</Menu.Item>
-        <Menu.Item icon={<DeleteOutlined translate />}>Eliminar</Menu.Item>
-    </Menu>
-
     return <Modal
         visible={props.visible}
         onCancel={props.close}

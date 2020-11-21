@@ -77,6 +77,20 @@ namespace SistemaContableWeb.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [Route("api/setting/SearchUsers")]
+        [HttpGet]
+        public IActionResult SearchUsers(string search)
+        {
+            try
+            {
+                var list = setting.SearchUsers(search);
+                return Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         [Route("api/setting/AddUser")]
         [HttpPost]
         public IActionResult AddUser(usuario usuario)
@@ -126,6 +140,20 @@ namespace SistemaContableWeb.Controllers
             }
         }
         //*********************************SECCION EMPRESA**********************************************
+        [Route("api/setting/DatabaseValidity")]
+        [HttpGet]
+        public IActionResult DatabaseValidity(string dbName)
+        {
+            try
+            {
+                var company = setting.DatabaseValidity(dbName);
+                return Ok(company);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         [Route("api/setting/GetCompany")]
         [HttpGet]
         public IActionResult GetCompany(int id)
@@ -273,6 +301,86 @@ namespace SistemaContableWeb.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+
+
+        //PERFILES//
+
+        [Route("api/setting/getprofiles")]
+        [HttpGet]
+        public IActionResult Getprofiles()
+        {
+            try
+            {
+                return Ok(setting.getProfiles());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("api/setting/getPermissions")]
+        [HttpGet]
+        public IActionResult GetPermissions(int empresa, int usuario)
+        {
+            try
+            {
+                return Ok(setting.getPermissions(empresa, usuario));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
+        }
+
+        [Route("api/setting/editPermissions")]
+        [HttpPost]
+        public IActionResult EditPermissions(List<PerfilUsuario> perfilUsuarios)
+        {
+            try
+            {
+                setting.EditPermissions(perfilUsuarios);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.InnerException.Message);
+            }
+        }
+
+        //ACCESOS
+
+        [Route("api/setting/GetCompaniesByUser")]
+        [HttpGet]
+        public IActionResult GetCompaniesByUser(int userId)
+        {
+            try
+            {
+                return Ok(setting.GetCompaniesByUser(userId));
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, ex.InnerException);
+            }
+        }
+
+        [Route("api/setting/SaveAccess")]
+        [HttpPost]
+        public IActionResult SaveAccess(List<acceso> acceso)
+        {
+            try
+            {
+                setting.SaveAccess(acceso);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, ex.InnerException);
             }
         }
     }

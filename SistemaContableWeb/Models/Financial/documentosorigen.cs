@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaContableWeb.Models.Setting
+namespace SistemaContableWeb.Models.Financial
 {
-    public class Perfiles
+    public class documentosorigen
     {
         [Key]
         public int id { get; set; }
-        public string Form { get; set; }
+        public string origendocumento { get; set; }
+        public int serie { get; set; }
     }
 }
