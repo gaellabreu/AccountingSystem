@@ -9,8 +9,11 @@ namespace SistemaContableWeb.Context
 {
     public class DataContext: DbContext
     {
-        //public DataContext(DbContextOptions<DataContext> options) : base(options)
-        //{ }
+        string dbName = "CONT";
+        public DataContext(string db = "CONT")
+        {
+            dbName = db;
+        }
         public virtual DbSet<usuario> usuario { get; set; }
         public virtual DbSet<empresas> empresas { get; set; }
         public virtual DbSet<MaestroMoneda> MaestroMoneda { get; set; }
@@ -19,13 +22,12 @@ namespace SistemaContableWeb.Context
         public virtual DbSet<AccesoMoneda> AccesoMoneda { get; set; }
         public virtual DbSet<Perfiles> Perfiles { get; set; }
         public virtual DbSet<PerfilUsuario> PerfilUsuario { get; set; }
+        public virtual DbSet<roles> roles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder
-            //    .UseSqlServer(@"Server=DESKTOP-MKAB65N\GP2013;Database=CONT;Persist Security Info=True;User ID=sa;Password=Soporte100;MultipleActiveResultSets=True;");
             optionsBuilder
-                .UseMySQL(@"Server=localhost;Port=3306;Database=CONT;Uid=root;Pwd=G@el155931394;");
+                .UseMySQL(@$"Server=localhost;Port=3306;Database={dbName};Uid=root;Pwd=G@el155931394;");
         }
     }
 }

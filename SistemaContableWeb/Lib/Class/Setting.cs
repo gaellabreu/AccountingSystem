@@ -11,28 +11,82 @@ namespace SistemaContableWeb.Lib.Class
 {
     public class Setting : Base
     {
+        public Setting(string dbName = "CONT") : base(dbName) { }
         //*****************************************SECCION DE USUARIO******************************************************
         //*****************************************************************************************************************
+        public (bool result, LoginResponse userData) Login(Login login)
+        {
+            var loginResponse = new LoginResponse();
+
+            using (var context = db)
+            {
+                var userData = context.usuario
+                    .Join(context.acceso, user => user.id, access => access.IdUsuario, (user, access) => new { user, access })
+                    .Join(context.empresas, parent => parent.access.IdEmpresa, company => company.Id, (parent, company) => new { parent, company })
+                    .Where(x => x.parent.user.Usuario == login.username && x.parent.user.pass == login.password).FirstOrDefault();
+
+                if (userData != null)
+                {
+                    loginResponse = new LoginResponse()
+                    {
+                        username = userData.parent.user.Usuario,
+                        companyId = userData.company.Id,
+                        companyName = userData.company.nombre
+                    };
+                }
+
+                return (userData != null, loginResponse);
+            }
+        }
+        public bool ExitsUser(string usuario)
+        {
+            using (var context = db)
+                return context.usuario.Any(x => x.Usuario == usuario);
+        }
+        public bool ExitsCompany(string name)
+        {
+            using (var context = db)
+                return context.empresas.Any(x => x.nombre == name);
+        }
+        public bool ExitsCurrency(string IdMoneda)
+        {
+            using (var context = db)
+                return context.MaestroMoneda.Any(x => x.IdMoneda == IdMoneda);
+        }
+
+        public void KeyresetUser(Login login)
+        {
+            using (var context = db)
+            {
+                var Upda = context.usuario.Where(x => x.Usuario == login.username && x.pass == login.password).FirstOrDefault();
+                Upda.pass = login.password;
+                context.Entry(Upda).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
         public usuario GetUser(int id)
         {
-            using (var context = new DataContext())
+            using (var context = db)
                 return context.usuario.Find(id);
         }
         public List<ListUser> ListUser()
         {
-            using (var context = new DataContext())
-                return context.usuario.Select(s => new ListUser
-                {
-                    id = s.id,
-                    nombre = s.Nombre,
-                    tipo = s.tipo,
-                    usuario = s.Usuario,
-                    email = s.Email
-                }).ToList();
+            using (var context = db)
+            {
+                return context.usuario.Join(context.roles, x => x.tipo, y => y.id, (x, y) => new { x, y })
+                    .Select(x => new ListUser() { 
+                        id = x.x.id,
+                        usuario = x.x.Usuario,
+                        email = x.x.Email,
+                        nombre = x.x.Nombre,
+                        tipo = x.x.tipo,
+                        nombreTipo = x.y.name
+                    }).ToList();
+            }
         }
         public List<Option> SearchUsers(string s)
         {
-            using (var context = new DataContext())
+            using (var context = db)
                 return context.usuario.Where(x => x.Usuario.ToLower().Contains(s.ToLower()))
                     .Select(s => new Option
                     {
@@ -42,7 +96,7 @@ namespace SistemaContableWeb.Lib.Class
         }
         public void AddUser(usuario User)
         {
-            using (var context = new DataContext())
+            using (var context = db)
             {
                 context.usuario.Add(User);
                 context.SaveChanges();
@@ -51,7 +105,7 @@ namespace SistemaContableWeb.Lib.Class
         }
         public void DeleteUser(int id)
         {
-            using (var context = new DataContext())
+            using (var context = db)
             {
                 var dele = context.usuario.Find(id);
                 context.Entry(dele).State = EntityState.Deleted;
@@ -60,7 +114,7 @@ namespace SistemaContableWeb.Lib.Class
         }
         public void EditUser(usuario Usuario)
         {
-            using (var context = new DataContext())
+            using (var context = db)
             {
                 var user = context.usuario.Find(Usuario.id);
                 user.Nombre = Usuario.Nombre;
@@ -72,23 +126,29 @@ namespace SistemaContableWeb.Lib.Class
             }
         }
 
+        public List<roles> GetRoles()
+        {
+            using (var context = db)
+                return context.roles.ToList();
+        }
+
 
         //*****************************************SECCION DE EMPRESA******************************************************
         //*****************************************************************************************************************
 
         public empresas GetCompany(int id)
         {
-            using (var context = new DataContext())
+            using (var context = db)
                 return context.empresas.Find(id);
         }
         public List<empresas> ListCompany()
         {
-            using (var context = new DataContext())
+            using (var context = db)
                 return context.empresas.Where(x => !x.Deleted).ToList();
         }
         public void AddCompany(empresas company)
         {
-            using (var context = new DataContext())
+            using (var context = db)
             {
                 context.empresas.Add(company);
                 context.SaveChanges();
@@ -96,7 +156,7 @@ namespace SistemaContableWeb.Lib.Class
         }
         public void DeleteCompany(int id)
         {
-            using (var context = new DataContext())
+            using (var context = db)
             {
                 var comp = context.empresas.Find(id);
                 comp.Deleted = true;
@@ -106,7 +166,7 @@ namespace SistemaContableWeb.Lib.Class
         }
         public void EditCompany(empresas company)
         {
-            using (var context = new DataContext())
+            using (var context = db)
             {
                 var comp = context.empresas.Find(company.Id);
                 comp.nombre = company.nombre;
@@ -126,17 +186,17 @@ namespace SistemaContableWeb.Lib.Class
         //Currency
         public MaestroMoneda GetCurrency(int id)
         {
-            using (var context = new DataContext())
+            using (var context = db)
                 return context.MaestroMoneda.Find(id);
         }
         public List<MaestroMoneda> ListCurrency()
         {
-            using (var context = new DataContext())
+            using (var context = db)
                 return context.MaestroMoneda.Where(x => !x.Inactivo).ToList();
         }
         public void AddCurrency(MaestroMoneda Currency)
         {
-            using (var context = new DataContext())
+            using (var context = db)
             {
                 context.MaestroMoneda.Add(Currency);
                 context.SaveChanges();
@@ -144,7 +204,7 @@ namespace SistemaContableWeb.Lib.Class
         }
         public void DeleteCurrency(int id)
         {
-            using (var context = new DataContext())
+            using (var context = db)
             {
                 var comp = context.MaestroMoneda.Find(id);
                 comp.Inactivo = true;
@@ -154,7 +214,7 @@ namespace SistemaContableWeb.Lib.Class
         }
         public void EditCurrency(MaestroMoneda Currency)
         {
-            using (var context = new DataContext())
+            using (var context = db)
             {
                 var curr = context.MaestroMoneda.Find(Currency.id);
                 curr.IdMoneda = Currency.IdMoneda;
@@ -168,13 +228,13 @@ namespace SistemaContableWeb.Lib.Class
 
         public List<Perfiles> getProfiles()
         {
-            using (var ctx = new DataContext())
+            using (var ctx = db)
                 return ctx.Perfiles.ToList();
         }
 
         public List<PerfilUsuario> getPermissions(int e, int u)
         {
-            using (var ctx = new DataContext())
+            using (var ctx = db)
             {
                 var data = ctx.Set<PerfilUsuario>().FromSqlRaw("CALL sp_Pefil_UserId ({0},{1})", u, e).ToList();
                 return data;
@@ -183,7 +243,7 @@ namespace SistemaContableWeb.Lib.Class
 
         public void EditPermissions(List<PerfilUsuario> p)
         {
-            using (var ctx = new DataContext())
+            using (var ctx = db)
             {
                 var perfiles = p.Select(x => x.IdPerfiles);
                 var usuarios = p.Select(x => x.IdUsuario);
@@ -214,7 +274,7 @@ namespace SistemaContableWeb.Lib.Class
 
         public List<Access> GetCompaniesByUser(int id)
         {
-            using (var ctx = new DataContext())
+            using (var ctx = db)
             {
                 var companies = ctx.empresas.Select(x => new Access
                 {
@@ -237,7 +297,7 @@ namespace SistemaContableWeb.Lib.Class
         public void SaveAccess(List<acceso> accs)
         {
 
-            using (var ctx = new DataContext())
+            using (var ctx = db)
             {
                 accs.ForEach((a) =>
                 {

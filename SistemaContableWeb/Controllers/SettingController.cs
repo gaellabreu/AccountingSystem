@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-//using System.Web.Http;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using SistemaContableWeb.Context;
 using SistemaContableWeb.Models.Setting;
 using SistemaContableWeb.Lib.Class;
+using Microsoft.AspNetCore.Http;
+using SistemaContableWeb.DTO;
+
 namespace SistemaContableWeb.Controllers
 {
     [ApiController]
@@ -25,16 +23,43 @@ namespace SistemaContableWeb.Controllers
         {
             try
             {
-                if (setting.Login(login))
-                    return Ok();
-                return BadRequest("Usuario y clave incorrecto");
+                var (result, userData) = setting.Login(login);
+                if (result)
+                {
+                    if (string.IsNullOrEmpty(HttpContext.Session.GetString("username")))
+                    {
+                        HttpContext.Session.SetString("username", userData.username);
+                        HttpContext.Session.SetString("empresa", userData.companyName);
+                    }
 
+                    return Ok(userData);
+                }
+                else
+                    return Unauthorized();
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
+
+        [Route("api/setting/logout")]
+        [HttpPost]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("username");
+            return Ok();
+        }
+
+        [Route("api/setting/checklogin")]
+        [HttpGet]
+        public IActionResult CheckLogin()
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("username")))
+                return Unauthorized();
+            return Ok();
+        }
+
         [Route("api/setting/KeyresetUser")]
         [HttpPost]
         public IActionResult KeyresetUser(Login login)
@@ -137,6 +162,20 @@ namespace SistemaContableWeb.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+        [Route("api/setting/GetRoles")]
+        [HttpGet]
+        public IActionResult GetRoles()
+        {
+            try
+            {
+                return Ok(setting.GetRoles());
+            }
+            catch (Exception)
+            {
+
+                return BadRequest("Error al obtener roles");
             }
         }
         //*********************************SECCION EMPRESA**********************************************

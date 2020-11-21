@@ -13,7 +13,7 @@ namespace SistemaContableWeb.Models.Setting
         public int id { get; set; }
         public string Usuario { get; set; }
         public string  pass { get; set; }
-        public string tipo { get; set; }
+        public int tipo { get; set; }
         public string Nombre { get; set; }
         public string Email { get; set; }
     }
