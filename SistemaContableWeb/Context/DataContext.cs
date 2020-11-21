@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SistemaContableWeb.Models.Financial;
 using SistemaContableWeb.Models.Setting;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SistemaContableWeb.Context
 {
-    public class DataContext: DbContext
+    public class DataContext : DbContext
     {
         string dbName = "CONT";
         public DataContext(string db = "CONT")
@@ -24,6 +25,16 @@ namespace SistemaContableWeb.Context
         public virtual DbSet<PerfilUsuario> PerfilUsuario { get; set; }
         public virtual DbSet<roles> roles { get; set; }
 
+
+        //*********************Datos modulo financiero o contables******************************
+
+        public virtual DbSet<categoriascuentas> categoriascuentas { get; set; }
+        public virtual DbSet<cuentascontables> cuentascontables { get; set; }
+        public virtual DbSet<TrabajoEntradaDiarioEnc> TrabajoEntradaDiarioEnc { get; set; }
+        public virtual DbSet<TrabajoEntradaDiarioDetail> TrabajoEntradaDiarioDetail { get; set; }
+        public virtual DbSet<periodosfiscales> periodosfiscales { get; set; }
+        public virtual DbSet<registrotasa> registrotasa { get; set; }
+        public virtual DbSet<documentosorigen> documentosorigen { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder

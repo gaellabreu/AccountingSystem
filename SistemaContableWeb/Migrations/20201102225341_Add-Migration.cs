@@ -4,7 +4,7 @@ using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace SistemaContableWeb.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class AddMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -116,7 +116,7 @@ namespace SistemaContableWeb.Migrations
                 name: "PerfilUsuario",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     IdPerfiles = table.Column<int>(nullable: false),
                     IdUsuario = table.Column<int>(nullable: false),
@@ -130,7 +130,7 @@ namespace SistemaContableWeb.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PerfilUsuario", x => x.id);
+                    table.PrimaryKey("PK_PerfilUsuario", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(

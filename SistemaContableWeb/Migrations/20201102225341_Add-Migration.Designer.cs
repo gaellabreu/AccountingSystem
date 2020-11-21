@@ -9,8 +9,8 @@ using SistemaContableWeb.Context;
 namespace SistemaContableWeb.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201030044734_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201102225341_Add-Migration")]
+    partial class AddMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -105,7 +105,7 @@ namespace SistemaContableWeb.Migrations
 
             modelBuilder.Entity("SistemaContableWeb.Models.Setting.PerfilUsuario", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -136,7 +136,7 @@ namespace SistemaContableWeb.Migrations
                     b.Property<string>("usuarioMofi")
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("PerfilUsuario");
                 });

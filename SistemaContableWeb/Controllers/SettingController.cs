@@ -179,6 +179,20 @@ namespace SistemaContableWeb.Controllers
             }
         }
         //*********************************SECCION EMPRESA**********************************************
+        [Route("api/setting/DatabaseValidity")]
+        [HttpGet]
+        public IActionResult DatabaseValidity(string dbName)
+        {
+            try
+            {
+                var company = setting.DatabaseValidity(dbName);
+                return Ok(company);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         [Route("api/setting/GetCompany")]
         [HttpGet]
         public IActionResult GetCompany(int id)
