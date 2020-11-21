@@ -1,0 +1,520 @@
+cuenta;descripcion;idcategoria;tipocontabilizacion;tiposaldo;idMoneda;usuario;fechacracion;fechamodificacion
+000-1100-00;Cash - Operating Account;1;1;1;;luis;30/10/2020;30/10/2020
+000-1110-00;Cash - Payroll;1;1;1;;luis;30/10/2020;30/10/2020
+000-1120-00;Cash - Flex Benefits Program;1;1;1;;luis;30/10/2020;30/10/2020
+000-1130-00;Petty Cash;1;1;1;;luis;30/10/2020;30/10/2020
+000-1140-00;Savings;2;1;1;;luis;30/10/2020;30/10/2020
+000-1200-00;Accounts Receivable;3;1;1;;luis;30/10/2020;30/10/2020
+000-1205-00;Sales Discounts Available;3;1;1;;luis;30/10/2020;30/10/2020
+000-1210-00;Allowance for Doubtful Accounts;3;1;1;;luis;30/10/2020;30/10/2020
+000-1220-00;Credit Card Receivable;3;1;1;;luis;30/10/2020;30/10/2020
+000-1220-01;Credit Card Receivable-AmericaCharge;3;1;1;;luis;30/10/2020;30/10/2020
+000-1220-02;Credit Card Receivable-Retail;3;1;1;;luis;30/10/2020;30/10/2020
+000-1220-03;Credit Card Receivable-Gold;3;1;1;;luis;30/10/2020;30/10/2020
+000-1220-04;Credit Card Receivable-Platinum;3;1;1;;luis;30/10/2020;30/10/2020
+000-1230-00;Interest Receivable;3;1;1;;luis;30/10/2020;30/10/2020
+000-1240-00;Notes Receivable;4;1;1;;luis;30/10/2020;30/10/2020
+000-1250-00;Other Receivables;3;1;1;;luis;30/10/2020;30/10/2020
+000-1260-00;Employee Advances;3;1;1;;luis;30/10/2020;30/10/2020
+000-1300-01;Inventory - Retail/Parts;5;1;1;;luis;30/10/2020;30/10/2020
+000-1300-02;Inventory - Finished Goods;5;1;1;;luis;30/10/2020;30/10/2020
+000-1310-01;Inventory Warehouse - Retail/Parts;5;1;1;;luis;30/10/2020;30/10/2020
+000-1400-00;Prepaid Expenses;7;1;1;;luis;30/10/2020;30/10/2020
+000-1410-00;Prepaid Insurance;7;1;1;;luis;30/10/2020;30/10/2020
+000-1500-00;Furniture & Fixtures;9;1;1;;luis;30/10/2020;30/10/2020
+000-1505-00;Accumulated Depreciation-Furniture & Fixtures;10;1;1;;luis;30/10/2020;30/10/2020
+000-1510-00;Computer Equipment;9;1;1;;luis;30/10/2020;30/10/2020
+000-1515-00;Accumulated Depreciation-Computer Equipment;10;1;1;;luis;30/10/2020;30/10/2020
+000-1520-00;Machinery & Equipment;9;1;1;;luis;30/10/2020;30/10/2020
+000-1525-00;Accumulated Depreciation-Machinery & Equipment;10;1;1;;luis;30/10/2020;30/10/2020
+000-1530-00;Fleet Vehicles;9;1;1;;luis;30/10/2020;30/10/2020
+000-1535-00;Accumulated Depreciation-Fleet Vehicles;10;1;1;;luis;30/10/2020;30/10/2020
+000-1600-00;Computer Software;11;1;1;;luis;30/10/2020;30/10/2020
+000-1610-00;Amortized Software Costs;11;1;1;;luis;30/10/2020;30/10/2020
+000-1700-00;Leasehold Improvement Costs;9;1;1;;luis;30/10/2020;30/10/2020
+000-1710-00;Amortized Leasehold Improvements;9;1;1;;luis;30/10/2020;30/10/2020
+000-2100-00;Accounts Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2105-00;Purchases Discounts Available;13;1;1;;luis;30/10/2020;30/10/2020
+000-2110-00;Accrued Expenses;13;1;1;;luis;30/10/2020;30/10/2020
+000-2115-00;Unearned Income;13;1;1;;luis;30/10/2020;30/10/2020
+000-2120-00;Commissions Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2130-00;Bonuses Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2140-00;Accrued Vacation Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2150-00;Taxable Benefits Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2161-00;IL State Withholding Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2162-00;NE State Witholding Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2163-00;IN State Witholding Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2164-00;MN State Withholding Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2165-00;MO State Withholding Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2166-00;Bloomington City Withholding Tax Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2170-00;Federal Withholding Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2175-00;FICA Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2180-00;FUTA Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2191-00;IL State SUTA Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2192-00;NE State SUTA Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2193-00;IN State SUTA Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2194-00;MN State SUTA Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2195-00;MO State SUTA Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2200-00;Payroll Deductions Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2210-00;401(k) Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2220-00;Insurance Premiums Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2230-00;Medical Reimbursement Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2240-00;Dependent Care Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2250-00;Employee Benefits Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2260-00;Union Dues Payable - 1;13;1;1;;luis;30/10/2020;30/10/2020
+000-2261-00;Union Dues Payable - 2;13;1;1;;luis;30/10/2020;30/10/2020
+000-2270-00;IL Workers Compensation Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2271-00;NE Workers Compensation Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2272-00;IN Workers Compensation Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2273-00;MN Workers Compensation Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2274-00;MO Workers compensation Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2275-00;Ontario Workers Compensation Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2276-00;Alberta Workers Compensation Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2277-00;Quebec Workers Compensation Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2280-00;RRSP Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2281-00;CPP Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2282-00;QPP Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2283-00;UIC Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2284-00;Quebec Withholding Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2300-00;IL State Sales Tax Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2310-00;Chicago City Sales Tax Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2311-00;Springfield City Tax Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2315-00;Export/Duty Tax Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2320-00;GST Collected-Canada;16;1;1;;luis;30/10/2020;30/10/2020
+000-2321-00;GST Input Tax Credit-Canada;16;1;1;;luis;30/10/2020;30/10/2020
+000-2322-00;PST Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2323-00;QST Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2330-00;Australia Sales Tax Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2340-00;GST Collected -New Zealand;16;1;1;;luis;30/10/2020;30/10/2020
+000-2341-00;GST Input Tax Credit-New Zealand;16;1;1;;luis;30/10/2020;30/10/2020
+000-2350-00;VAT Collected-UK;16;1;1;;luis;30/10/2020;30/10/2020
+000-2351-00;VAT Paid-UK;16;1;1;;luis;30/10/2020;30/10/2020
+000-2400-00;Dividends Payable;18;1;1;;luis;30/10/2020;30/10/2020
+000-2410-00;Freight Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2420-00;Brokerage Fees Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2430-00;Miscellaneous Payable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2500-00;Interest Payable;17;1;1;;luis;30/10/2020;30/10/2020
+000-2600-00;Federal Income Tax Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2610-00;IL Income Tax Payable;16;1;1;;luis;30/10/2020;30/10/2020
+000-2700-00;Line of Credit-Accounts Recievable;13;1;1;;luis;30/10/2020;30/10/2020
+000-2710-00;Operating Line of Credit;13;1;1;;luis;30/10/2020;30/10/2020
+000-2720-00;Client Deposits;13;1;1;;luis;30/10/2020;30/10/2020
+000-2800-00;Current N/P on Vehicles;14;1;1;;luis;30/10/2020;30/10/2020
+000-2810-00;Current N/P to Banks;14;1;1;;luis;30/10/2020;30/10/2020
+000-2820-00;Current N/P to Stockholders;14;1;1;;luis;30/10/2020;30/10/2020
+000-2900-00;Notes Payable on Vehicles;22;1;1;;luis;30/10/2020;30/10/2020
+000-2910-00;Notes Payable to Banks;22;1;1;;luis;30/10/2020;30/10/2020
+000-2920-00;Notes Payable to Stockholders;22;1;1;;luis;30/10/2020;30/10/2020
+000-2930-00;Capital Leases Payable;22;1;1;;luis;30/10/2020;30/10/2020
+000-2940-00;Deferred Income Taxes;16;1;1;;luis;30/10/2020;30/10/2020
+000-3010-00;Common Stock;23;1;1;;luis;30/10/2020;30/10/2020
+000-3020-00;Additional Paid-In Capital-Common Stock;25;1;1;;luis;30/10/2020;30/10/2020
+000-3030-00;Retained Earnings;27;1;1;;luis;30/10/2020;30/10/2020
+000-4100-00;Sales;31;1;1;;luis;30/10/2020;30/10/2020
+000-4110-01;US Sales - Retail/Parts;31;1;1;;luis;30/10/2020;30/10/2020
+000-4110-02;US Sales - Finished Goods;31;1;1;;luis;30/10/2020;30/10/2020
+000-4111-01;Canadian Sales - Retail/Parts;31;1;1;;luis;30/10/2020;30/10/2020
+000-4111-02;Canadian Sales - Finished Goods;31;1;1;;luis;30/10/2020;30/10/2020
+000-4112-01;AustralAsian Sales - Retail/Parts;31;1;1;;luis;30/10/2020;30/10/2020
+000-4112-02;AustralAsian Sales - Finished Goods;31;1;1;;luis;30/10/2020;30/10/2020
+000-4120-00;US Sales - Service Plans;31;1;1;;luis;30/10/2020;30/10/2020
+000-4121-00;Canadian Sales - Service Plans;31;1;1;;luis;30/10/2020;30/10/2020
+000-4122-00;AustralAsian Sales - Service Plans;31;1;1;;luis;30/10/2020;30/10/2020
+000-4130-00;US Sales - Installation Charges;31;1;1;;luis;30/10/2020;30/10/2020
+000-4131-00;Canadian Sales - Installation Charges;31;1;1;;luis;30/10/2020;30/10/2020
+000-4132-00;AustralAsian Sales - Installation Charges;31;1;1;;luis;30/10/2020;30/10/2020
+000-4140-00;US Sales - Repair Charges;31;1;1;;luis;30/10/2020;30/10/2020
+000-4141-00;Canadian Sales - Repair Charges;31;1;1;;luis;30/10/2020;30/10/2020
+000-4142-00;AustralAsian Sales - Repair Charges;31;1;1;;luis;30/10/2020;30/10/2020
+000-4180-00;US Sales Discounts;32;1;1;;luis;30/10/2020;30/10/2020
+000-4181-00;Canadian Sales Discounts;32;1;1;;luis;30/10/2020;30/10/2020
+000-4182-00;AustralAsian Sales Discounts;32;1;1;;luis;30/10/2020;30/10/2020
+000-4183-00;US Sales Trade Discounts;32;1;1;;luis;30/10/2020;30/10/2020
+000-4184-00;Canadian Sales Trade Discounts;32;1;1;;luis;30/10/2020;30/10/2020
+000-4185-00;AustralAsian Trade Discounts;32;1;1;;luis;30/10/2020;30/10/2020
+000-4190-00;US Sales Returns;32;1;1;;luis;30/10/2020;30/10/2020
+000-4191-00;Canadian Sales Returns;32;1;1;;luis;30/10/2020;30/10/2020
+000-4192-00;AustralAsian Sales Returns;32;1;1;;luis;30/10/2020;30/10/2020
+000-4510-01;Cost of Goods Sold - Retail/Parts;33;1;1;;luis;30/10/2020;30/10/2020
+000-4510-02;Cost of Goods Sold - Finished Goods;33;1;1;;luis;30/10/2020;30/10/2020
+000-4600-00;Purchases Discounts Taken;33;1;1;;luis;30/10/2020;30/10/2020
+000-4601-00;Purchases Trade Discounts;33;1;1;;luis;30/10/2020;30/10/2020
+000-4700-00;Shrinkage and Waste;33;1;1;;luis;30/10/2020;30/10/2020
+000-4710-00;Freight and Handling;33;1;1;;luis;30/10/2020;30/10/2020
+000-4720-00;International Freight and Handling;33;1;1;;luis;30/10/2020;30/10/2020
+000-5100-00;Salaries and Wages;36;1;1;;luis;30/10/2020;30/10/2020
+000-5200-00;CPP Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-5210-00;QPP Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-5220-00;UIC Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-5300-00;SUTA Tax Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-5400-00;FUTA Tax Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-5500-00;Workers Compensation Tax Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-6170-04;Repairs & Maintenance Expense-Staff;35;1;1;;luis;30/10/2020;30/10/2020
+000-6170-05;Repairs & Maintenance Expense-Line;35;1;1;;luis;30/10/2020;30/10/2020
+000-6200-00;Depreciation Expense - Furniture & Fixtures;40;1;1;;luis;30/10/2020;30/10/2020
+000-6210-00;Depreciation Expense - Computer Equipment;40;1;1;;luis;30/10/2020;30/10/2020
+000-6220-00;Depreciation Expense - Machinery & Equipment;40;1;1;;luis;30/10/2020;30/10/2020
+000-6230-00;Depreciation Expense - Fleet Vehicles;40;1;1;;luis;30/10/2020;30/10/2020
+000-6300-00;Amortization - Software;47;1;1;;luis;30/10/2020;30/10/2020
+000-6400-00;Life Insurance - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+000-6410-00;Vehicle Insurance;35;1;1;;luis;30/10/2020;30/10/2020
+000-6420-00;Liability Insurance;35;1;1;;luis;30/10/2020;30/10/2020
+000-6430-00;Casualty Insurance;35;1;1;;luis;30/10/2020;30/10/2020
+000-6500-04;Postage/Freight Expense-Staff;35;1;1;;luis;30/10/2020;30/10/2020
+000-6500-05;Postage/Freight Expense-Line;35;1;1;;luis;30/10/2020;30/10/2020
+000-6600-00;Bank Fees;35;1;1;;luis;30/10/2020;30/10/2020
+000-6610-00;Advertising Expense;35;1;1;;luis;30/10/2020;30/10/2020
+000-6620-00;Direct Mail Advertising Expense;35;1;1;;luis;30/10/2020;30/10/2020
+000-6630-00;IL State Sales Tax Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-6635-00;Import Tax Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-6640-00;Chicago City Sales Tax Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-6650-00;Australia Sales Tax Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-6651-00;PST Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-6652-00;PPS Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-6660-00;PST Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-6661-00;QST Expense;39;1;1;;luis;30/10/2020;30/10/2020
+000-6700-00;Bad Debts Expense;35;1;1;;luis;30/10/2020;30/10/2020
+000-6701-00;Write-Off Expense;35;1;1;;luis;30/10/2020;30/10/2020
+000-6710-00;Collection Costs;35;1;1;;luis;30/10/2020;30/10/2020
+000-6720-00;Legal Fees;35;1;1;;luis;30/10/2020;30/10/2020
+000-6730-00;Accounting Fees;35;1;1;;luis;30/10/2020;30/10/2020
+000-6740-00;Fines & Penalties;35;1;1;;luis;30/10/2020;30/10/2020
+000-6750-00;Licenses & Fees;35;1;1;;luis;30/10/2020;30/10/2020
+000-6760-00;Recruiting & Moving Expense;35;1;1;;luis;30/10/2020;30/10/2020
+000-6770-00;Company Meetings;35;1;1;;luis;30/10/2020;30/10/2020
+000-6780-00;Miscellaneous Expense;42;1;1;;luis;30/10/2020;30/10/2020
+000-6790-00;Warranty Expense;35;1;1;;luis;30/10/2020;30/10/2020
+000-7010-00;Finance Charge Income;43;1;1;;luis;30/10/2020;30/10/2020
+000-7020-00;Interest Income;43;1;1;;luis;30/10/2020;30/10/2020
+000-7040-00;Miscellaneous Income;43;1;1;;luis;30/10/2020;30/10/2020
+000-7041-00;Freight Income;43;1;1;;luis;30/10/2020;30/10/2020
+000-8010-00;Finance Charge Expense;42;1;1;;luis;30/10/2020;30/10/2020
+000-8020-00;Interest Expense;42;1;1;;luis;30/10/2020;30/10/2020
+000-8030-00;Gain or Loss on Sale of Assets;43;1;1;;luis;30/10/2020;30/10/2020
+000-8100-00;Federal Income Taxes;39;1;1;;luis;30/10/2020;30/10/2020
+000-8110-00;State Income Taxes;39;1;1;;luis;30/10/2020;30/10/2020
+100-5100-00;Salaries and Wages - Administration;36;1;1;;luis;30/10/2020;30/10/2020
+100-5110-00;Overtime Pay - Administration;36;1;1;;luis;30/10/2020;30/10/2020
+100-5120-00;Bonuses - Administration;36;1;1;;luis;30/10/2020;30/10/2020
+100-5140-00;Profit Sharing - Administration;36;1;1;;luis;30/10/2020;30/10/2020
+100-5150-00;Employee Benefits - Administration;37;1;1;;luis;30/10/2020;30/10/2020
+100-5160-00;Health Insurance Expense - Administration;37;1;1;;luis;30/10/2020;30/10/2020
+100-5170-00;Payroll Taxes - Administration;39;1;1;;luis;30/10/2020;30/10/2020
+100-6100-00;Training - Administration;37;1;1;;luis;30/10/2020;30/10/2020
+100-6110-00;Company Car - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+100-6120-00;Supplies/Rental - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+100-6130-00;Supplies/Hardware - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+100-6140-00;Supplies/Software - Administation;35;1;1;;luis;30/10/2020;30/10/2020
+100-6150-00;Supplies-Allocated - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+100-6160-00;Dues & Subscriptions - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+100-6170-00;Repairs & Maintenance - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+100-6180-00;Rent Expense - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+100-6190-00;Utilities Expense - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+100-6500-00;Postage/Freight - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+100-6510-00;Telephone - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+100-6520-00;Travel - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+100-6530-00;Meals/Entertainment - Administration;35;1;1;;luis;30/10/2020;30/10/2020
+200-5100-00;Salaries and Wages - Accounting;36;1;1;;luis;30/10/2020;30/10/2020
+200-5110-00;Overtime Pay - Accounting;36;1;1;;luis;30/10/2020;30/10/2020
+200-5120-00;Bonuses - Accounting;36;1;1;;luis;30/10/2020;30/10/2020
+200-5140-00;Profit Sharing - Accounting;36;1;1;;luis;30/10/2020;30/10/2020
+200-5150-00;Employee Benefits - Accounting;37;1;1;;luis;30/10/2020;30/10/2020
+200-5160-00;Health Insurance Expense - Accounting;37;1;1;;luis;30/10/2020;30/10/2020
+200-5170-00;Payroll Taxes - Accounting;39;1;1;;luis;30/10/2020;30/10/2020
+200-6100-00;Training - Accounting;37;1;1;;luis;30/10/2020;30/10/2020
+200-6120-00;Supplies/Rental - Accounting;35;1;1;;luis;30/10/2020;30/10/2020
+200-6130-00;Supplies/Hardware - Accounting;35;1;1;;luis;30/10/2020;30/10/2020
+200-6140-00;Supplies/Software - Accounting;35;1;1;;luis;30/10/2020;30/10/2020
+200-6150-00;Supplies-Allocated - Accounting;35;1;1;;luis;30/10/2020;30/10/2020
+200-6160-00;Dues & Subscriptions - Accounting;35;1;1;;luis;30/10/2020;30/10/2020
+200-6170-00;Repairs & Maintenance - Accounting;35;1;1;;luis;30/10/2020;30/10/2020
+200-6180-00;Rent Expense - Accounting;35;1;1;;luis;30/10/2020;30/10/2020
+200-6190-00;Utilities Expense - Accounting;35;1;1;;luis;30/10/2020;30/10/2020
+200-6500-00;Postage/Freight  - Accounting;35;1;1;;luis;30/10/2020;30/10/2020
+200-6510-00;Telephone - Accounting;35;1;1;;luis;30/10/2020;30/10/2020
+200-6520-00;Travel - Accounting;35;1;1;;luis;30/10/2020;30/10/2020
+200-6530-00;Meals/Entertainment - Accounting;35;1;1;;luis;30/10/2020;30/10/2020
+300-5100-00;Salaries and Wages - Sales;36;1;1;;luis;30/10/2020;30/10/2020
+300-5110-00;Overtime Pay - Sales;36;1;1;;luis;30/10/2020;30/10/2020
+300-5120-00;Bonuses - Sales;36;1;1;;luis;30/10/2020;30/10/2020
+300-5130-00;Commissions - Sales;36;1;1;;luis;30/10/2020;30/10/2020
+300-5140-00;Profit Sharing - Sales;36;1;1;;luis;30/10/2020;30/10/2020
+300-5150-00;Employee Benefits - Sales;37;1;1;;luis;30/10/2020;30/10/2020
+300-5160-00;Health Insurance Expense - Sales;37;1;1;;luis;30/10/2020;30/10/2020
+300-5170-00;Payroll Taxes - Sales;39;1;1;;luis;30/10/2020;30/10/2020
+300-6100-00;Training - Sales;37;1;1;;luis;30/10/2020;30/10/2020
+300-6120-00;Supplies/Rental - Sales;35;1;1;;luis;30/10/2020;30/10/2020
+300-6130-00;Supplies/Hardware - Sales;35;1;1;;luis;30/10/2020;30/10/2020
+300-6140-00;Supplies/Software - Sales;35;1;1;;luis;30/10/2020;30/10/2020
+300-6150-00;Supplies-Allocated - Sales;35;1;1;;luis;30/10/2020;30/10/2020
+300-6160-00;Dues & Subscriptions - Sales;35;1;1;;luis;30/10/2020;30/10/2020
+300-6170-00;Repairs & Maintenance - Sales;35;1;1;;luis;30/10/2020;30/10/2020
+300-6180-00;Rent Expense - Sales;35;1;1;;luis;30/10/2020;30/10/2020
+300-6190-00;Utilities Expense - Sales;35;1;1;;luis;30/10/2020;30/10/2020
+300-6500-00;Postage/Freight - Sales;35;1;1;;luis;30/10/2020;30/10/2020
+300-6510-00;Telephone - Sales;35;1;1;;luis;30/10/2020;30/10/2020
+300-6520-00;Travel - Sales;35;1;1;;luis;30/10/2020;30/10/2020
+300-6530-00;Meals/Entertainment - Sales;35;1;1;;luis;30/10/2020;30/10/2020
+400-5100-00;Salaries and Wages - Service/Installation US;36;1;1;;luis;30/10/2020;30/10/2020
+400-5101-00;Salaries and Wages - Service/Installation Canada;36;1;1;;luis;30/10/2020;30/10/2020
+400-5110-00;Overtime Pay - Service/Installation US;36;1;1;;luis;30/10/2020;30/10/2020
+400-5111-00;Overtime Pay - Service/Installation Canada;36;1;1;;luis;30/10/2020;30/10/2020
+400-5120-00;Bonuses - Services/Installation US;36;1;1;;luis;30/10/2020;30/10/2020
+400-5121-00;Bonuses - Services/Installation Canada;36;1;1;;luis;30/10/2020;30/10/2020
+400-5130-00;Commissions - Service/Installation US;36;1;1;;luis;30/10/2020;30/10/2020
+400-5131-00;Commissions - Service/Installation Canada;36;1;1;;luis;30/10/2020;30/10/2020
+400-5140-00;Profit Sharing - Service/Installation US;36;1;1;;luis;30/10/2020;30/10/2020
+400-5141-00;Profit Sharing - Service/Installation Canada;36;1;1;;luis;30/10/2020;30/10/2020
+400-5150-00;Employee Benefits - Service/Installation;37;1;1;;luis;30/10/2020;30/10/2020
+400-5160-00;Health Insurance Expense - Service/Installation;37;1;1;;luis;30/10/2020;30/10/2020
+400-5170-00;Payroll Taxes - Service/Installation;39;1;1;;luis;30/10/2020;30/10/2020
+400-5600-00;Contract Services - Service/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+400-6100-00;Training - Service/installation;37;1;1;;luis;30/10/2020;30/10/2020
+400-6110-00;Fleet Vehicle Expense;35;1;1;;luis;30/10/2020;30/10/2020
+400-6120-00;Supplies/Rental - Service/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+400-6130-00;Supplies/Hardware - Service/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+400-6140-00;Supplies/Software - Service/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+400-6150-00;Supplies-Allocated - Services/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+400-6160-00;Dues & Subscriptions - Service/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+400-6170-00;Repairs & Maintenance - Service/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+400-6180-00;Rent Expense - Service/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+400-6190-00;Utilities Expense - Service/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+400-6500-00;Postage/Freight - Service/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+400-6510-00;Telephone - Service/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+400-6520-00;Travel - Service/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+400-6530-00;Meals/Entertainment - Service/Installation;35;1;1;;luis;30/10/2020;30/10/2020
+500-5100-00;Salaries and Wages - Consulting/Training US;36;1;1;;luis;30/10/2020;30/10/2020
+500-5101-00;Salaries and Wages - Consulting/Training Canada;36;1;1;;luis;30/10/2020;30/10/2020
+500-5110-00;Overtime Pay - Consulting/Training US;36;1;1;;luis;30/10/2020;30/10/2020
+500-5111-00;Overtime Pay - Consulting/Training Canada;36;1;1;;luis;30/10/2020;30/10/2020
+500-5120-00;Bonuses - Consulting/Training US;36;1;1;;luis;30/10/2020;30/10/2020
+500-5121-00;Bonuses - Consulting/Training Canada;36;1;1;;luis;30/10/2020;30/10/2020
+500-5130-00;Commissions - Consulting/Training US;36;1;1;;luis;30/10/2020;30/10/2020
+500-5131-00;Commissions - Consulting/Training Canada;36;1;1;;luis;30/10/2020;30/10/2020
+500-5140-00;Profit Sharing - Consulting/Training US;36;1;1;;luis;30/10/2020;30/10/2020
+500-5141-00;Profit Sharing - Consulting/Training Canada;36;1;1;;luis;30/10/2020;30/10/2020
+500-5150-00;Employee Benefits - Consulting/Training;37;1;1;;luis;30/10/2020;30/10/2020
+500-5160-00;Health Insurance Expense - Consulting/Training;37;1;1;;luis;30/10/2020;30/10/2020
+500-5170-00;Payroll Taxes - Consulting/Training;39;1;1;;luis;30/10/2020;30/10/2020
+500-5600-00;Contract Services - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+500-6100-00;Training - Consulting/Training;37;1;1;;luis;30/10/2020;30/10/2020
+500-6120-00;Supplies/Rental - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+500-6130-00;Supplies/Hardware - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+500-6140-00;Supplies/Software - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+500-6150-00;Supplies-Allocated - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+500-6160-00;Dues & Subscriptions - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+500-6170-00;Repairs & Maintenance - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+500-6180-00;Rent Expense - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+500-6190-00;Utilities Expense - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+500-6500-00;Postage/Freight - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+500-6510-00;Telephone - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+500-6520-00;Travel - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+500-6530-00;Meals/Entertainment - Consulting/Training;35;1;1;;luis;30/10/2020;30/10/2020
+600-5100-00;Salaries and Wages - Purchasing/Receiving;36;1;1;;luis;30/10/2020;30/10/2020
+600-5110-00;Overtime Pay - Purchasing/Receiving;36;1;1;;luis;30/10/2020;30/10/2020
+600-5120-00;Bonuses - Purchasing/Receiving;36;1;1;;luis;30/10/2020;30/10/2020
+600-5140-00;Profit Sharing - Purchasing/Receiving;36;1;1;;luis;30/10/2020;30/10/2020
+600-5150-00;Employee Benefits - Purchasing/Receiving;37;1;1;;luis;30/10/2020;30/10/2020
+600-5160-00;Health Insurance Expense - Purchasing/Receiving;37;1;1;;luis;30/10/2020;30/10/2020
+600-5170-00;Payroll Taxes - Purchasing/Receiving;39;1;1;;luis;30/10/2020;30/10/2020
+600-6100-00;Training - Purchasing/Receiving;37;1;1;;luis;30/10/2020;30/10/2020
+600-6120-00;Supplies/Rental - Purchasing/Receiving;35;1;1;;luis;30/10/2020;30/10/2020
+600-6130-00;Supplies/Hardware - Purchasing/Receiving;35;1;1;;luis;30/10/2020;30/10/2020
+600-6140-00;Supplies/Software - Purchases/Receiving;35;1;1;;luis;30/10/2020;30/10/2020
+600-6150-00;Supplies-Allocated - Purchases/Receiving;35;1;1;;luis;30/10/2020;30/10/2020
+600-6160-00;Dues & Subscriptions - Purchasing/Receiving;35;1;1;;luis;30/10/2020;30/10/2020
+600-6170-00;Repairs & Maintenance - Purchasing/Receiving;35;1;1;;luis;30/10/2020;30/10/2020
+600-6180-00;Rent Expense - Purchasing/Receiving;35;1;1;;luis;30/10/2020;30/10/2020
+600-6190-00;Utilities Expense - Purchasing/Receiving;35;1;1;;luis;30/10/2020;30/10/2020
+600-6500-00;Postage/Freight - Purchasing/Receiving;35;1;1;;luis;30/10/2020;30/10/2020
+600-6510-00;Telephone - Purchasing/Receiving;35;1;1;;luis;30/10/2020;30/10/2020
+600-6520-00;Travel - Purchasing/Receiving;35;1;1;;luis;30/10/2020;30/10/2020
+600-6530-00;Meals/Entertainment - Purchasing/Receiving;35;1;1;;luis;30/10/2020;30/10/2020
+000-6190-00;Utilities Expense;0;1;1;;luis;30/10/2020;30/10/2020
+100-9010-00;Square Footage-Administration;0;1;1;;luis;30/10/2020;30/10/2020
+200-9010-00;Square Footage-Accounting;0;1;1;;luis;30/10/2020;30/10/2020
+300-9010-00;Square Footage-Sales;0;1;1;;luis;30/10/2020;30/10/2020
+400-9010-00;Square Footage-Service;0;1;1;;luis;30/10/2020;30/10/2020
+500-9010-00;Square Footage-Consulting/Training;0;1;1;;luis;30/10/2020;30/10/2020
+600-9010-00;Square Footage-Purchasing/Receiving;0;1;1;;luis;30/10/2020;30/10/2020
+100-9020-00;Employee Count-Administration;0;1;1;;luis;30/10/2020;30/10/2020
+200-9020-00;Employee Count-Accounting;0;1;1;;luis;30/10/2020;30/10/2020
+300-9020-00;Employee Count-Sales;0;1;1;;luis;30/10/2020;30/10/2020
+400-9020-00;Employee Count-Service/Installation;0;1;1;;luis;30/10/2020;30/10/2020
+500-9020-00;Employee Count-Consulting/Training;0;1;1;;luis;30/10/2020;30/10/2020
+600-9020-00;Employee Count-Purchases/Receiving;0;1;1;;luis;30/10/2020;30/10/2020
+100-9030-00;Fixed Assets-Computer Cabinets;0;1;1;;luis;30/10/2020;30/10/2020
+200-9030-00;Fixed Assets- Computer Cabinets;0;1;1;;luis;30/10/2020;30/10/2020
+300-9030-00;Fixed Assets- Computer Cabinets;0;1;1;;luis;30/10/2020;30/10/2020
+400-9030-00;Fixed Assets-Computer Cabinets;0;1;1;;luis;30/10/2020;30/10/2020
+500-9030-00;Fixed Assets- Computer Cabinets;0;1;1;;luis;30/10/2020;30/10/2020
+600-9030-00;Fixed Assets-Computer Cabinets;0;1;1;;luis;30/10/2020;30/10/2020
+000-9040-00;Number of Telephone Installations;0;1;1;;luis;30/10/2020;30/10/2020
+000-6180-00;Rent Expense;0;1;1;;luis;30/10/2020;30/10/2020
+000-7100-00;Realized Gain on MC Transactions;43;1;1;;luis;30/10/2020;30/10/2020
+000-8200-00;Realized Loss on MC Transactions;42;1;1;;luis;30/10/2020;30/10/2020
+000-7200-00;Unrealized Gain on MC Transactions;43;1;1;;luis;30/10/2020;30/10/2020
+000-8300-00;Unrealized Loss on MC Transactions;42;1;1;;luis;30/10/2020;30/10/2020
+000-1800-00;Revaluation Offset for Fin. Revaluation;12;1;1;;luis;30/10/2020;30/10/2020
+000-1270-00;Accounts Receivable-MC Trx;3;1;1;;luis;30/10/2020;30/10/2020
+000-2101-00;Accounts Payable-MC Trx;13;1;1;;luis;30/10/2020;30/10/2020
+000-7300-00;Rounding Writeoff due to MC Trx;43;1;1;;luis;30/10/2020;30/10/2020
+000-7400-00;Rounding Difference due to MC Trx;43;1;1;;luis;30/10/2020;30/10/2020
+000-1101-00;Cash in Bank - Canada;1;1;1;;luis;30/10/2020;30/10/2020
+000-1103-00;Cash in Bank - New Zealand;1;1;1;;luis;30/10/2020;30/10/2020
+000-1105-00;Cash in Bank - United Kingdom;1;1;1;;luis;30/10/2020;30/10/2020
+000-1102-00;Cash in Bank - Australia;1;1;1;;luis;30/10/2020;30/10/2020
+000-1104-00;Cash in Bank - Germany;1;1;1;;luis;30/10/2020;30/10/2020
+000-1106-00;Cash in Bank - South Africa;1;1;1;;luis;30/10/2020;30/10/2020
+000-1107-00;Cash in Bank - Singapore;1;1;1;;luis;30/10/2020;30/10/2020
+000-4114-01;Germany Sales - Retail/Parts;31;1;1;;luis;30/10/2020;30/10/2020
+000-4114-02;Germany Sales - Finished Goods;31;1;1;;luis;30/10/2020;30/10/2020
+000-4115-01;United Kingdom Sales - Retail/Parts;31;1;1;;luis;30/10/2020;30/10/2020
+000-4115-02;United Kingdom Sales - Finished Goods;31;1;1;;luis;30/10/2020;30/10/2020
+000-4116-01;South Africa - Retail/Parts;31;1;1;;luis;30/10/2020;30/10/2020
+000-4116-02;South Africa Sales - Finished Goods;31;1;1;;luis;30/10/2020;30/10/2020
+000-4117-01;Singapore Sales - Retail/Parts;31;1;1;;luis;30/10/2020;30/10/2020
+000-4117-02;Singapore Sales - Finished Goods;31;1;1;;luis;30/10/2020;30/10/2020
+000-4124-00;Germany Sales - Service Plans;31;1;1;;luis;30/10/2020;30/10/2020
+000-4125-00;United Kingdom Sales - Service Plans;31;1;1;;luis;30/10/2020;30/10/2020
+000-4126-00;South Africa Sales - Service Plans;31;1;1;;luis;30/10/2020;30/10/2020
+000-4127-00;Singapore Sales - Service Plans;31;1;1;;luis;30/10/2020;30/10/2020
+000-4134-00;Germany Sales - Installation Charges;31;1;1;;luis;30/10/2020;30/10/2020
+000-4135-00;United Kingdom Sales - Installation Charges;31;1;1;;luis;30/10/2020;30/10/2020
+000-4137-00;Singapore Sales - Installation Charges;31;1;1;;luis;30/10/2020;30/10/2020
+000-4179-00;United Kingdom Sales Discount;31;1;1;;luis;30/10/2020;30/10/2020
+000-4178-00;Singapore Sales Discount;31;1;1;;luis;30/10/2020;30/10/2020
+000-4177-00;Germany Sales Discount;31;1;1;;luis;30/10/2020;30/10/2020
+000-4176-00;South Africa Sales Discount;31;1;1;;luis;30/10/2020;30/10/2020
+000-4186-00;United Kingdom Trade Discount;31;1;1;;luis;30/10/2020;30/10/2020
+000-4187-00;Singapore Trade Discount;31;1;1;;luis;30/10/2020;30/10/2020
+000-4188-00;Germany Trade Discount;31;1;1;;luis;30/10/2020;30/10/2020
+000-4189-00;South Africa Trade Discount;31;1;1;;luis;30/10/2020;30/10/2020
+000-7201-00;Unrealized Gain on MC Transactions-Canada;43;1;1;;luis;30/10/2020;30/10/2020
+000-8301-00;Unrealized Loss on MC Transactions - Canada;42;1;1;;luis;30/10/2020;30/10/2020
+000-1271-00;Accounts Receivable - Canada;3;1;1;;luis;30/10/2020;30/10/2020
+000-2101-01;Accounts Payable - Canada;13;1;1;;luis;30/10/2020;30/10/2020
+000-7301-00;Rounding Writeoff - Canada;43;1;1;;luis;30/10/2020;30/10/2020
+000-7401-00;Rounding Difference - Canada;43;1;1;;luis;30/10/2020;30/10/2020
+000-7202-00;Unrealized Gain on MC Transactions - Australia;43;1;1;;luis;30/10/2020;30/10/2020
+000-8302-00;Unrealized Loss on MC Transactions - Australia;42;1;1;;luis;30/10/2020;30/10/2020
+000-1272-00;Accounts Receivables - Australia;3;1;1;;luis;30/10/2020;30/10/2020
+000-2101-02;Accounts Payable - Australia;13;1;1;;luis;30/10/2020;30/10/2020
+000-7302-00;Rounding Writeoff - Australia;43;1;1;;luis;30/10/2020;30/10/2020
+000-7203-00;Unrealized Gain on MC Transactions - New Zealand;43;1;1;;luis;30/10/2020;30/10/2020
+000-8303-00;Unrealized Loss on MC Transactions - New Zealand;42;1;1;;luis;30/10/2020;30/10/2020
+000-1273-00;Accounts Receivable - New Zealand;3;1;1;;luis;30/10/2020;30/10/2020
+000-2101-03;Accounts Payable - New Zealand;13;1;1;;luis;30/10/2020;30/10/2020
+000-7303-00;Rounding Writeoff - New Zealand;43;1;1;;luis;30/10/2020;30/10/2020
+000-7403-00;Rounding Difference - New Zealand;43;1;1;;luis;30/10/2020;30/10/2020
+000-7204-00;Unrealized Gain on MC Transactions - Germany;43;1;1;;luis;30/10/2020;30/10/2020
+000-8304-00;Unrealized Loss on MC Transactions - Germany;42;1;1;;luis;30/10/2020;30/10/2020
+000-1274-00;Accounts Receivable - Germany;3;1;1;;luis;30/10/2020;30/10/2020
+000-2101-04;Accounts Payable - Germany;13;1;1;;luis;30/10/2020;30/10/2020
+000-7304-00;Rounding Writeoff - Germany;43;1;1;;luis;30/10/2020;30/10/2020
+000-7404-00;Rounding Difference - Germany;43;1;1;;luis;30/10/2020;30/10/2020
+000-7205-00;Unrealized Gain on MC Transactions - United Kingdo;43;1;1;;luis;30/10/2020;30/10/2020
+000-8305-00;Unrealized Loss on MC Transactions - United Kingdo;42;1;1;;luis;30/10/2020;30/10/2020
+000-1275-00;Accounts Receivable - United Kingdom;3;1;1;;luis;30/10/2020;30/10/2020
+000-2101-05;Accounts Payable - United Kingdom;13;1;1;;luis;30/10/2020;30/10/2020
+000-7305-00;Rounding Writeoff - United Kingdom;43;1;1;;luis;30/10/2020;30/10/2020
+000-7405-00;Rounding Difference - United Kingdom;43;1;1;;luis;30/10/2020;30/10/2020
+000-7206-00;Unrealized Gain on MC Transactions - South Africa;43;1;1;;luis;30/10/2020;30/10/2020
+000-8306-00;Unrealized Loss on MC Transactions - South Africa;42;1;1;;luis;30/10/2020;30/10/2020
+000-1276-00;Accounts Receivable - South Africa;3;1;1;;luis;30/10/2020;30/10/2020
+000-2101-06;Accounts Payable - South Africa;13;1;1;;luis;30/10/2020;30/10/2020
+000-7306-00;Rounding Writeoff - South Africa;43;1;1;;luis;30/10/2020;30/10/2020
+000-7406-00;Rounding Difference - South Africa;43;1;1;;luis;30/10/2020;30/10/2020
+000-7207-00;Unrealized Gain on MC Transactions - Singapore;43;1;1;;luis;30/10/2020;30/10/2020
+000-8307-00;Unrealized Loss on MC Transactions - Singapore;42;1;1;;luis;30/10/2020;30/10/2020
+000-1277-00;Accounts Receivable - Singapore;3;1;1;;luis;30/10/2020;30/10/2020
+000-2101-07;Accounts Payable - Singapore;13;1;1;;luis;30/10/2020;30/10/2020
+000-7307-00;Rounding Writeoff - Singapore;43;1;1;;luis;30/10/2020;30/10/2020
+000-7407-00;Rounding Difference - Singapore;43;1;1;;luis;30/10/2020;30/10/2020
+000-7101-00;Realized Gain on MC Transactions - Z - C$ - SELL;43;1;1;;luis;30/10/2020;30/10/2020
+000-8201-00;Realized Loss on MC Transactions - Z - C$ - SELL;42;1;1;;luis;30/10/2020;30/10/2020
+000-7102-00;Realized Gain on MC Transactions - Z - C$ - BUY;43;1;1;;luis;30/10/2020;30/10/2020
+000-8202-00;Realized Loss on MC Transactions - Z - C$ - BUY;42;1;1;;luis;30/10/2020;30/10/2020
+000-7103-00;Realized Gain on MC Transactions - Z - C$ - AVG;43;1;1;;luis;30/10/2020;30/10/2020
+000-8203-00;Realized Loss on MC Transactions - Z - C$ - AVG;42;1;1;;luis;30/10/2020;30/10/2020
+000-7402-00;Rounding Difference - Australia;43;1;1;;luis;30/10/2020;30/10/2020
+000-4136-00;South Africa Sales - Installation Charges;31;1;1;;luis;30/10/2020;30/10/2020
+999-9999-99;Transfer Suspense Account;48;1;1;;luis;30/10/2020;30/10/2020
+000-1320-01;Non-inventoried item;5;1;1;;luis;30/10/2020;30/10/2020
+000-2740-00;Advances from Customers;21;1;1;;luis;30/10/2020;30/10/2020
+000-2730-00;Purchases Clearing Account;13;1;1;;luis;30/10/2020;30/10/2020
+000-2735-00;Purchases Clearing Acct for Inventory;5;1;1;;luis;30/10/2020;30/10/2020
+000-4730-00;Purchase Price Variance - Unrealized;13;1;1;;luis;30/10/2020;30/10/2020
+000-2111-00;Accrued Purchases;13;1;1;;luis;30/10/2020;30/10/2020
+000-5700-00;Non-Inventoried Purchase Item;42;1;1;;luis;30/10/2020;30/10/2020
+000-1330-01;Inventory Returns - Retail/Parts;5;1;1;;luis;30/10/2020;30/10/2020
+000-1330-02;Inventory Returns - Finished Goods;5;1;1;;luis;30/10/2020;30/10/2020
+000-1330-03;Inventory Returns - Warehouse;5;1;1;;luis;30/10/2020;30/10/2020
+000-1190-00;Cash Suspense;1;1;1;;luis;30/10/2020;30/10/2020
+000-1590-00;FA Clearing;9;1;1;;luis;30/10/2020;30/10/2020
+000-4740-00;Assembly Variance;42;1;1;;luis;30/10/2020;30/10/2020
+000-1390-00;Standard Cost Revaluation;5;1;1;;luis;30/10/2020;30/10/2020
+000-1370-01;Applied - Material Fixed OH;6;1;1;;luis;30/10/2020;30/10/2020
+000-1370-02;Applied - Material Var. OH;6;1;1;;luis;30/10/2020;30/10/2020
+000-4750-04;Variance - Labor;5;1;1;;luis;30/10/2020;30/10/2020
+000-4750-05;Variance - Labor Fixed OH;5;1;1;;luis;30/10/2020;30/10/2020
+000-4750-06;Variance - Labor Var. OH;5;1;1;;luis;30/10/2020;30/10/2020
+000-4750-07;Variance - Machine;5;1;1;;luis;30/10/2020;30/10/2020
+000-4750-08;Variance - Mach. Fixed OH;5;1;1;;luis;30/10/2020;30/10/2020
+000-4750-09;Variance - Mach. Var OH;5;1;1;;luis;30/10/2020;30/10/2020
+000-4750-01;Variance - Material;5;1;1;;luis;30/10/2020;30/10/2020
+000-4750-02;Variance - Mat. Fixed OH;5;1;1;;luis;30/10/2020;30/10/2020
+000-4750-03;Variance - Mat. Var. OH;5;1;1;;luis;30/10/2020;30/10/2020
+000-1360-01;WIP - Material;6;1;1;;luis;30/10/2020;30/10/2020
+000-1360-02;WIP - Material Fixed OH;6;1;1;;luis;30/10/2020;30/10/2020
+000-1360-03;WIP - Material Var. OH;6;1;1;;luis;30/10/2020;30/10/2020
+000-1360-04;WIP - Labor;6;1;1;;luis;30/10/2020;30/10/2020
+000-1360-05;WIP - Labor Fixed OH;6;1;1;;luis;30/10/2020;30/10/2020
+000-1360-06;WIP - Labor Var. OH;6;1;1;;luis;30/10/2020;30/10/2020
+000-1360-07;WIP - Machine;6;1;1;;luis;30/10/2020;30/10/2020
+000-1360-08;WIP - Machine Fixed OH;6;1;1;;luis;30/10/2020;30/10/2020
+000-1360-09;WIP - Machine Var. OH;6;1;1;;luis;30/10/2020;30/10/2020
+000-4520-01;CoGS - Material;33;1;1;;luis;30/10/2020;30/10/2020
+000-4520-02;CoGS - Material Fixed OH;33;1;1;;luis;30/10/2020;30/10/2020
+000-4520-03;CoGS - Material Var. OH;33;1;1;;luis;30/10/2020;30/10/2020
+000-4520-04;CoGS - Labor;33;1;1;;luis;30/10/2020;30/10/2020
+000-4520-05;CoGS - Labor Fixed OH;33;1;1;;luis;30/10/2020;30/10/2020
+000-4520-06;CoGS - Labor Var. OH;33;1;1;;luis;30/10/2020;30/10/2020
+000-4520-07;CoGS - Machine;33;1;1;;luis;30/10/2020;30/10/2020
+000-4520-08;CoGS - Machine Fixed OH;33;1;1;;luis;30/10/2020;30/10/2020
+000-4520-09;CoGS - Machine Var. OH;33;1;1;;luis;30/10/2020;30/10/2020
+000-1350-02;Inventory - Mat. Fixed OH;5;1;1;;luis;30/10/2020;30/10/2020
+000-1350-03;Inventory - Mat. Var. OH;5;1;1;;luis;30/10/2020;30/10/2020
+000-1350-04;Inventory - Labor;5;1;1;;luis;30/10/2020;30/10/2020
+000-1350-05;Inventory - Labor Fixed OH;5;1;1;;luis;30/10/2020;30/10/2020
+000-1350-06;Inventory - Labor Var. OH;5;1;1;;luis;30/10/2020;30/10/2020
+000-1350-07;Inventory - Machine;5;1;1;;luis;30/10/2020;30/10/2020
+000-1350-08;Inventory - Mach. Fixed OH;5;1;1;;luis;30/10/2020;30/10/2020
+000-1350-09;Inventory - Mach. Var. OH;5;1;1;;luis;30/10/2020;30/10/2020
+000-2950-00;PPV - Realized;13;1;1;;luis;30/10/2020;30/10/2020
+000-2950-01;PPV - Unrealized;13;1;1;;luis;30/10/2020;30/10/2020
+000-1380-04;Labor Applied;6;1;1;;luis;30/10/2020;30/10/2020
+000-1380-05;Applied - Labor Fixed OH;6;1;1;;luis;30/10/2020;30/10/2020
+000-1380-06;Applied - Labor Var. OH;6;1;1;;luis;30/10/2020;30/10/2020
+000-1380-07;Machine - Applied;6;1;1;;luis;30/10/2020;30/10/2020
+000-1380-08;Applied - Mach. Fixed OH;6;1;1;;luis;30/10/2020;30/10/2020
+000-1380-09;Applied - Mach. Var. OH;6;1;1;;luis;30/10/2020;30/10/2020
+000-7410-00;MFG Rounding;5;1;1;;luis;30/10/2020;30/10/2020
+000-1312-00;Inventory Offset;5;1;1;;luis;30/10/2020;30/10/2020
+000-5615-00;Floor Stock Expense;42;1;1;;luis;30/10/2020;30/10/2020
+000-4731-00;Withholding offset;42;1;1;;luis;30/10/2020;30/10/2020
+000-1340-01;Work in Progress;6;1;1;;luis;30/10/2020;30/10/2020
+000-4530-01;Cost of Goods Sold/Expense;33;1;1;;luis;30/10/2020;30/10/2020
+000-2014-01;Contra Accounts for Costs;21;1;1;;luis;30/10/2020;30/10/2020
+000-1280-00;Unbilled Accounts Receivable;3;1;1;;luis;30/10/2020;30/10/2020
+000-4280-01;Unbilled Project Revenue;31;1;1;;luis;30/10/2020;30/10/2020
+000-4200-00;Project Revenue/Sales;31;1;1;;luis;30/10/2020;30/10/2020
+000-4800-00;Overhead;21;1;1;;luis;30/10/2020;30/10/2020
+000-4210-01;Project Billings;31;1;1;;luis;30/10/2020;30/10/2020
+000-6800-01;Project Expenses;34;1;1;;luis;30/10/2020;30/10/2020
+000-4500-01;Project Revenue;31;1;1;;luis;30/10/2020;30/10/2020
+000-6900-00;Project Losses;21;1;1;;luis;30/10/2020;30/10/2020
+000-8410-00;Billings in Excess of Earnings;21;1;1;;luis;30/10/2020;30/10/2020
+000-8510-00;Earnings in Excess of Billings;12;1;1;;luis;30/10/2020;30/10/2020
+000-8610-00;Project Deferred Revenue;43;1;1;;luis;30/10/2020;30/10/2020
+000-8710-00;Retentions Account Receivable;27;1;1;;luis;30/10/2020;30/10/2020

@@ -103,7 +103,7 @@ namespace SistemaContableWeb.Migrations
 
             modelBuilder.Entity("SistemaContableWeb.Models.Setting.PerfilUsuario", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -134,7 +134,7 @@ namespace SistemaContableWeb.Migrations
                     b.Property<string>("usuarioMofi")
                         .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("PerfilUsuario");
                 });

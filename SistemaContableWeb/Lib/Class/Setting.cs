@@ -75,7 +75,11 @@ namespace SistemaContableWeb.Lib.Class
 
         //*****************************************SECCION DE EMPRESA******************************************************
         //*****************************************************************************************************************
-
+        public bool DatabaseValidity(string dbName)
+        {
+            using (var context = new DataContext())
+                return context.empresas.Any(x => x.dbName == dbName);
+        }
         public empresas GetCompany(int id)
         {
             using (var context = new DataContext())

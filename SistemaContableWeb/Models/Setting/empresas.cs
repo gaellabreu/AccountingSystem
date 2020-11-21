@@ -20,5 +20,6 @@ namespace SistemaContableWeb.Models.Setting
         public string ciudad { get; set; }
         public string Provincia { get; set; }
         public bool Deleted { get; set; }
+        public string dbName { get; set; }
     }
 }
