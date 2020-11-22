@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
-import { Route, useHistory } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { Route, useHistory, useRouteMatch } from 'react-router';
 import './app.css'
 
 import { Col, Layout, Menu, Row, Typography } from 'antd';
 import {
-    SettingOutlined,
     UserOutlined,
     BankOutlined,
     BranchesOutlined,
-    DollarOutlined
+    DollarOutlined,
+    PoweroffOutlined,
+    BookOutlined
 } from '@ant-design/icons';
-import Users from './components/settings/Users';
-import Companies from './components/settings/Companies';
-import Profiles from './components/settings/Profiles';
-import Multicurrency from './components/settings/Multicurrency';
 
-const { Header, Content, Footer, Sider } = Layout;
+import Settings from './components/settings'
+import Login from './components/login/'
+import API, { handleError } from 'utils/API';
+import { AxiosError } from 'axios';
+import Accounts from 'components/accounting';
+
+const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
 export default () => {
@@ -23,8 +26,25 @@ export default () => {
 
     const history = useHistory()
 
+    useEffect(() => {
+        isLogged()
+    }, [])
+
+    let isLogin = useRouteMatch("/");
+
     const toggleCollapse = () => setCollapsed(!collapsed)
-    return <>
+
+    const logout = () => API.post('setting/logout')
+        .then(() => history.push('/'))
+        .catch(handleError)
+
+    const isLogged = () => API.get('setting/checklogin')
+        .then(() => history.push('/setting'))
+        .catch((err: AxiosError) => {
+            err.request?.status == 401 && history.push('/')
+        })
+
+    return isLogin?.isExact ? <Route exact path={'/'}> <Login /> </Route> : <>
         <Layout style={{ minHeight: '100vh' }}>
             <Sider collapsible collapsed={collapsed} onCollapse={toggleCollapse}>
                 <div style={{
@@ -33,11 +53,18 @@ export default () => {
                     margin: '16px'
                 }} />
                 <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                    <SubMenu key="sub1" title="Configuración">
-                        <Menu.Item key="1" onClick={() => history.push('/users')}><UserOutlined translate />Usuarios</Menu.Item>
-                        <Menu.Item key="2" onClick={() => history.push('/companies')}><BankOutlined translate />Empresas</Menu.Item>
-                        <Menu.Item key="3" onClick={() => history.push('/profiles')}><BranchesOutlined translate />Perfiles</Menu.Item>
-                        <Menu.Item key="4" onClick={() => history.push('/multicurrency')}><DollarOutlined translate />Multimoneda</Menu.Item>
+                    <SubMenu key="subSetting" title="Configuración">
+                        <Menu.Item key={1} onClick={() => history.push('/settings/users')}><UserOutlined translate />Usuarios</Menu.Item>
+                        <Menu.Item key={2} onClick={() => history.push('/settings/companies')}><BankOutlined translate />Empresas</Menu.Item>
+                        <Menu.Item key={3} onClick={() => history.push('/settings/profiles')}><BranchesOutlined translate />Perfiles</Menu.Item>
+                        <Menu.Item key={4} onClick={() => history.push('/settings/multicurrency')}><DollarOutlined translate />Multimoneda</Menu.Item>
+                    </SubMenu>
+                    <SubMenu key="subAccounting" title="Contabilidad">
+                        <Menu.Item key={11} onClick={() => history.push('/accounting/accounts')}><BookOutlined translate />Cuentas</Menu.Item>
+                        <Menu.Item key={12} onClick={() => history.push('/accounting/ledgers')}><BookOutlined translate />Diario</Menu.Item>
+                    </SubMenu>
+                    <SubMenu key="subUser" title="Usuario">
+                        <Menu.Item key={99} onClick={logout}><PoweroffOutlined translate />Cerrar sesión</Menu.Item>
                     </SubMenu>
                 </Menu>
             </Sider>
@@ -54,21 +81,8 @@ export default () => {
 
                 </Header>
                 <Content style={{ margin: '8px', overflowY: 'auto' }}>
-                    <Route exact path={'/'}>
-                        <Users />
-                    </Route>
-                    <Route path={'/users'}>
-                        <Users />
-                    </Route>
-                    <Route path={'/companies'}>
-                        <Companies />
-                    </Route>
-                    <Route path={'/profiles'}>
-                        <Profiles />
-                    </Route>
-                    <Route path={'/multicurrency'}>
-                        <Multicurrency />
-                    </Route>
+                    <Settings />
+                    <Accounts />
                 </Content>
             </Layout>
         </Layout>

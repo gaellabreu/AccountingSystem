@@ -10,16 +10,10 @@ namespace SistemaContableWeb.Context
 {
     public class DataContext : DbContext
     {
-        private string dbName;
-        //public DataContext(DbContextOptions<DataContext> options) : base(options)
-        //{ }
-        public DataContext()
+        string dbName = "CONT";
+        public DataContext(string db = "CONT")
         {
-            dbName = "CONT";
-        }
-        public DataContext(string sdbname)
-        {
-            dbName = sdbname;
+            dbName = db;
         }
         public virtual DbSet<usuario> usuario { get; set; }
         public virtual DbSet<empresas> empresas { get; set; }
@@ -29,6 +23,7 @@ namespace SistemaContableWeb.Context
         public virtual DbSet<AccesoMoneda> AccesoMoneda { get; set; }
         public virtual DbSet<Perfiles> Perfiles { get; set; }
         public virtual DbSet<PerfilUsuario> PerfilUsuario { get; set; }
+        public virtual DbSet<roles> roles { get; set; }
 
 
         //*********************Datos modulo financiero o contables******************************
@@ -42,10 +37,8 @@ namespace SistemaContableWeb.Context
         public virtual DbSet<documentosorigen> documentosorigen { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder
-            //    .UseSqlServer(@"Server=DESKTOP-MKAB65N\GP2013;Database=CONT;Persist Security Info=True;User ID=sa;Password=Soporte100;MultipleActiveResultSets=True;");
             optionsBuilder
-                .UseMySQL(@"Server=localhost;Port=3306;Database="+ dbName +";Uid=root");
+                .UseMySQL(@$"Server=localhost;Port=3306;Database={dbName};Uid=root;Pwd=G@el155931394;");
         }
     }
 }

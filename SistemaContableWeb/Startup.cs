@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SistemaContableWeb.Context;
+using System;
 
 namespace SistemaContableWeb
 {
@@ -34,6 +35,15 @@ namespace SistemaContableWeb
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromHours(1);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             //services.AddDbContext<DataContext>(optionns =>
             //optionns.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
         }
@@ -58,6 +68,9 @@ namespace SistemaContableWeb
 
             app.UseRouting();
             app.UseCors(options => options.AllowAnyOrigin());
+
+            app.UseSession();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

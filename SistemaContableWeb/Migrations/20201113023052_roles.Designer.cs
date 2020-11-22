@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SistemaContableWeb.Context;
 
 namespace SistemaContableWeb.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20201113023052_roles")]
+    partial class roles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,6 +155,20 @@ namespace SistemaContableWeb.Migrations
                     b.ToTable("Perfiles");
                 });
 
+            modelBuilder.Entity("SistemaContableWeb.Models.Setting.Roles", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Roles");
+                });
+
             modelBuilder.Entity("SistemaContableWeb.Models.Setting.acceso", b =>
                 {
                     b.Property<int>("id")
@@ -215,20 +231,6 @@ namespace SistemaContableWeb.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("empresas");
-                });
-
-            modelBuilder.Entity("SistemaContableWeb.Models.Setting.roles", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("name")
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
-
-                    b.ToTable("roles");
                 });
 
             modelBuilder.Entity("SistemaContableWeb.Models.Setting.usuario", b =>

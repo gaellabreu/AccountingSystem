@@ -7,6 +7,7 @@ export default class User {
     usuario = ''
     nombre = ''
     email = ''
-    tipo = 0
+    tipo = 1
+    nombreTipo = ''
     pass = ''
 }

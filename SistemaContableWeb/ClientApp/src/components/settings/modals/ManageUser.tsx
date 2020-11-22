@@ -1,11 +1,13 @@
 import { Modal, Form, Input, Select, Button, notification } from "antd";
+import { AxiosResponse } from "axios";
 import User from "models/User";
 import React, { useEffect, useState } from "react";
-import API from "utils/API";
+import API, { handleError } from "utils/API";
 
 export default (props: any) => {
   const [userForm] = Form.useForm();
   const [model, setModel] = useState<User>(new User());
+  const [roles, setRoles] = useState(new Array)
   const [loading, setLoading] = useState(false);
 
   const layout = {
@@ -23,10 +25,18 @@ export default (props: any) => {
     setModel({ ...props.data });
   }, [props.data]);
 
+  useEffect(() => {
+    getRoles()
+  }, [])
+
   const changeModel = (e: any) =>
     setModel({ ...model, ...{ [e.target.name]: e.target.value } });
   const typeSelect = (value: number) =>
     setModel({ ...model, ...{ tipo: value } });
+
+  const getRoles = () => API.get('setting/getroles')
+    .then((response: AxiosResponse) => setRoles([...response.data]))
+    .catch(handleError)
 
   const save = () => {
     setLoading(true);
@@ -36,7 +46,7 @@ export default (props: any) => {
       usuario: model.usuario,
       email: model.email,
       nombre: model.nombre,
-      tipo: model.tipo.toString(),
+      tipo: model.tipo,
       pass: model.pass,
     };
 
@@ -59,7 +69,6 @@ export default (props: any) => {
       .finally(() => setLoading(false));
   };
 
-  
 
   const isEdit = !!props.data.id;
 
@@ -85,9 +94,7 @@ export default (props: any) => {
         </Form.Item>
         <Form.Item label={"Tipo"} name={"tipo"}>
           <Select onSelect={typeSelect}>
-            <Select.Option value={1}>Test</Select.Option>
-            <Select.Option value={2}>Test 2</Select.Option>
-            <Select.Option value={3}>Test 3</Select.Option>
+            {roles.map((role: any) => <Select value={role.id}>{role.name}</Select>)}
           </Select>
         </Form.Item>
         {!isEdit && (

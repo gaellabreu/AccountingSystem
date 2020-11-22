@@ -60,8 +60,8 @@ export default (props: any) => {
     },
     {
       title: "Rol",
-      dataIndex: "tipo",
-      key: "tipo",
+      dataIndex: "nombreTipo",
+      key: "nombreTipo",
     },
     {
       title: "Nombre",
