@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SistemaContableWeb.Lib.Class;
 using SistemaContableWeb.Models.Financial;
+using Microsoft.AspNetCore.Http;
 
 namespace SistemaContableWeb.Controllers
 {
     [ApiController]
-    public class FinancialController : Controller
+    public class FinancialController : ControllerBase
     {
         Financial financial;
+        
         public FinancialController()
         {
             financial = new Financial("test");
         }
+        
         [Route("api/Financial/Index")]
         public IActionResult Index()
         {
@@ -37,13 +38,13 @@ namespace SistemaContableWeb.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [Route("api/Financial/exitscategory")]
+        [Route("api/Financial/categoryexists")]
         [HttpGet]
-        public IActionResult exitscategory(string descripcion)
+        public IActionResult categoryexists(string descripcion)
         {
             try
             {
-                var exis = financial.exitscategory(descripcion);
+                var exis = financial.categoryexists(descripcion);
                 return Ok(exis);
             }
             catch (Exception ex)
@@ -71,7 +72,22 @@ namespace SistemaContableWeb.Controllers
         {
             try
             {
-                financial.AddCategory(edit);
+                financial.EditCategory(edit);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("api/Financial/DeleteCategory")]
+        [HttpPost]
+        public IActionResult DeleteCategory(categoriascuentas edit)
+        {
+            try
+            {
+                financial.DeleteCategory(edit);
                 return Ok();
             }
             catch (Exception ex)
@@ -81,7 +97,7 @@ namespace SistemaContableWeb.Controllers
         }
         ///**********************************Account Master***********************************
         ///***********************************************************************************
-         [Route("api/Financial/Listaccounts")]
+        [Route("api/Financial/Listaccounts")]
         [HttpGet]
         public IActionResult Listaccounts()
         {
@@ -120,6 +136,7 @@ namespace SistemaContableWeb.Controllers
         {
             try
             {
+                add.usuario = HttpContext.Session.GetString("username");
                 financial.AddAccount(add);
                 return Ok();
             }
@@ -134,12 +151,42 @@ namespace SistemaContableWeb.Controllers
         {
             try
             {
+                edit.usuario = HttpContext.Session.GetString("username");
                 financial.EditAccount(edit);
                 return Ok();
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("api/Financial/DeleteAccount")]
+        [HttpPost]
+        public IActionResult DeleteAccount(cuentascontables del)
+        {
+            try
+            {
+                financial.DeleteAccount(del);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("api/Financial/searchAccounts")]
+        [HttpGet]
+        public IActionResult SearchAccounts(string term)
+        {
+            try
+            {
+                return Ok(financial.SearchAccounts(term));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
             }
         }
         //************************PERIODOS****************************

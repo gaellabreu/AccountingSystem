@@ -1,4 +1,5 @@
 import { Button, Card, Form, Input, notification, Select } from 'antd';
+import { userLogin } from '../../store/user/actions'
 import loginbackground from 'assets/images/loginbackground.jpg'
 import React, { useEffect, useState } from 'react'
 import {
@@ -7,9 +8,9 @@ import {
     LoginOutlined
 } from '@ant-design/icons';
 import LoginModel from 'models/Login';
-import API, { handleError } from 'utils/API';
+import API from 'utils/API';
 import { AxiosError, AxiosResponse } from 'axios';
-import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
 
 export default () => {
     const [login, changeLogin] = useState(new LoginModel)
@@ -18,7 +19,7 @@ export default () => {
 
     const [loginform] = Form.useForm()
 
-    const history = useHistory()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         getCompanies()
@@ -42,18 +43,7 @@ export default () => {
 
     const submitLogin = () => {
         changeLoading(true)
-        API.post('setting/login', login)
-        .then(() => handleOk())
-        .catch(handleError)
-        .finally(() => changeLoading(false))
-    }
-
-    const handleOk = () => {
-        notification.success({
-            message: 'Bienvenido'
-        })
-
-        history.push('/setting')
+        dispatch(userLogin(login))
     }
 
     const getCompanies = () =>

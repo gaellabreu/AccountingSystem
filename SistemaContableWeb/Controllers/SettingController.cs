@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaContableWeb.Models.Setting;
 using SistemaContableWeb.Lib.Class;
 using Microsoft.AspNetCore.Http;
-using SistemaContableWeb.DTO;
 
 namespace SistemaContableWeb.Controllers
 {
@@ -30,6 +29,7 @@ namespace SistemaContableWeb.Controllers
                     {
                         HttpContext.Session.SetString("username", userData.username);
                         HttpContext.Session.SetString("empresa", userData.companyName);
+                        HttpContext.Session.SetString("idEmpresa", userData.companyId.ToString());
                     }
 
                     return Ok(userData);
@@ -296,6 +296,23 @@ namespace SistemaContableWeb.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [Route("api/setting/ListAssignedCurrency")]
+        [HttpGet]
+        public IActionResult ListAssignedCurrency(int empresa)
+        {
+            try
+            {
+                var idEmpresa = empresa == 0? Convert.ToInt32(HttpContext.Session.GetString("idEmpresa")) : empresa;
+                var list = setting.ListAssignedCurrency(idEmpresa);
+                return Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [Route("api/setting/AddCurrency")]
         [HttpPost]
         public IActionResult AddCurrency(MaestroMoneda currency)
@@ -343,6 +360,39 @@ namespace SistemaContableWeb.Controllers
             }
         }
 
+        [Route("api/setting/AssignCurrency")]
+        [HttpPost]
+        public IActionResult AssignCurrency(AccesoMoneda accesoMoneda)
+        {
+            try
+            {
+                if (setting.isCurrencyAssigned(accesoMoneda))
+                    return BadRequest("Esta moneda ya había sido asignada a esta empresa.");
+
+                accesoMoneda.UsuarioModif = HttpContext.Session.GetString("username");
+                setting.AssignCurrency(accesoMoneda);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("api/setting/DeleteAssignedCurrency")]
+        [HttpPost]
+        public IActionResult DeleteAssignedCurrency(int id)
+        {
+            try
+            {
+                setting.RemoveAssignedCurrency(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
 
         //PERFILES//

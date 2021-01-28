@@ -38,7 +38,7 @@ namespace SistemaContableWeb.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                .UseMySQL(@$"Server=localhost;Port=3306;Database={dbName};Uid=root;Pwd=G@el155931394;");
+                .UseMySQL(@$"Server=localhost;Port=3306;Database={dbName};Uid=root;Pwd=root;");
         }
     }
 }

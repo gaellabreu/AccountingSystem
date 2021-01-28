@@ -10,13 +10,11 @@ namespace SistemaContableWeb.Models.Financial
     {
         [Key]
         public int Identrada { get; set; }
-        public string origendocumento { get; set; }
-        public int tipo { get; set; }
+        public int origendocumento { get; set; }
         public string documento { get; set; }
         public string referencia { get; set; }
         public DateTime fecha { get; set; }
         public string usuario { get; set; }
-        public int series { get; set; }
         public string IdMoneda { get; set; }
         public decimal tasa { get; set; }
         public int periodo { get; set; }

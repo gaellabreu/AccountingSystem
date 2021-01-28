@@ -1,4 +1,4 @@
-import Axios, { AxiosError } from 'axios'
+import Axios, { AxiosError, AxiosResponse } from 'axios'
 import { notification } from 'antd'
 
 export default Axios.create({
@@ -14,7 +14,7 @@ export default Axios.create({
 export const handleError = (err: AxiosError) => {
     var message = '';
     switch (err.request?.status) {
-        case 401: message = "No está autorizado para realizar esta acción" 
+        case 401: message = "No está autorizado para realizar esta acción"
             break;
         default: message = err.request?.responseText
             break;
@@ -22,3 +22,5 @@ export const handleError = (err: AxiosError) => {
 
     return notification.error({ message })
 }
+
+export const handleSuccess = (resp: AxiosResponse) => notification.success({ message: 'Acción realizada correctamente' })

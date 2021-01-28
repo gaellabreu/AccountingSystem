@@ -1,11 +1,11 @@
 import { AxiosResponse } from 'axios';
-import API from 'utils/API';
-import { SET_USER_DATA, REMOVE_USER_DATA } from './types'
+import { SET_USER_DATA } from './types'
+import API, { handleError } from 'utils/API';
+import LoginModel from '../../models/Login'
+import AuthenticatedUser from 'models/AuthenticatedUser';
 
-export const login = () => async (dispatch:any) => {
-    API.get(`setting/login`)
-        .then((response:AxiosResponse) => {
-            dispatch({ type: SET_USER_DATA, payload: response.data })
-        })
-        .catch((err) => console.log(err))
-};
+export const userLogin = (model: LoginModel) => async (dispatch: any) => API.post(`setting/login`, model)
+    .then((response: AxiosResponse) => {
+        dispatch({ type: SET_USER_DATA, payload: new AuthenticatedUser(response.data) })
+    })
+    .catch(handleError);

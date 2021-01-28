@@ -93,7 +93,7 @@ export default (props: any) => {
           <Input name={"nombre"} onChange={changeModel} />
         </Form.Item>
         <Form.Item label={"Tipo"} name={"tipo"}>
-          <Select onSelect={typeSelect}>
+          <Select value={model.tipo} onSelect={typeSelect}>
             {roles.map((role: any) => <Select value={role.id}>{role.name}</Select>)}
           </Select>
         </Form.Item>

@@ -22,6 +22,7 @@ import API from "utils/API";
 import { AxiosError, AxiosResponse } from "axios";
 import ManageCompany from "./modals/ManageCompany";
 import Company from "models/Company";
+import { GET_COMPANIES } from "utils/Routes";
 
 const { confirm } = Modal;
 
@@ -80,7 +81,7 @@ export default () => {
   ];
 
   const getCompanies = () =>
-    API.get("setting/listcompany")
+    API.get(GET_COMPANIES)
       .then((response: AxiosResponse) => setCompanies([...response.data]))
       .catch((err: AxiosError) =>
         notification.error({

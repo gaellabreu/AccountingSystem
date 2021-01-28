@@ -3,6 +3,7 @@ import Company from "models/Company";
 import User from "models/User";
 import React, { useEffect, useState } from "react";
 import API from "utils/API";
+import { ADD_COMPANY, EDIT_COMPANY } from "utils/Routes";
 
 export default (props: any) => {
   const [companyForm] = Form.useForm();
@@ -30,7 +31,7 @@ export default (props: any) => {
   const save = () => {
     setLoading(true);
 
-    const endpoint = props.data.id ? "editcompany" : "addcompany";
+    const endpoint = props.data.id ? EDIT_COMPANY : ADD_COMPANY;
 
     API.post(`setting/${endpoint}`, model)
       .then(() => {

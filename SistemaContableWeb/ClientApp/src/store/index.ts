@@ -1,5 +1,7 @@
 import User from './user/reducer'
+import General from './general/reducer'
 
 export const reducers = {
-    counter: User
+    user: User,
+    general: General
 };

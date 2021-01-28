@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using SistemaContableWeb.Models.Financial;
 using SistemaContableWeb.Context;
 using Microsoft.EntityFrameworkCore;
+using SistemaContableWeb.DTO;
 //using SistemaContableWeb.DTO;
 
 
@@ -14,7 +15,7 @@ namespace SistemaContableWeb.Lib.Class
     {
         private string dbName;
         Boolean resut;
-        public Financial(string sdbname)
+        public Financial(string sdbname = "CONT")
         {
             dbName = sdbname;
         }
@@ -29,7 +30,7 @@ namespace SistemaContableWeb.Lib.Class
         }
      
 
-        public bool exitscategory(string descripcion)
+        public bool categoryexists(string descripcion)
         {
             using (var context = new DataContext(dbName))
                 return context.categoriascuentas.Any(x => x.descripcion == descripcion);
@@ -44,26 +45,30 @@ namespace SistemaContableWeb.Lib.Class
             }
             
         }
+
         public void EditCategory(categoriascuentas edit)
         {
             using (var ctx = new DataContext(dbName))
             {
-              var editUp =  ctx.categoriascuentas.Find(edit.idcategoria);
-                editUp.descripcion = edit.descripcion;
-                ctx.Update(editUp);
+                ctx.Update(edit);
+                ctx.SaveChanges();
+            }
+        }
+
+        public void DeleteCategory(categoriascuentas del)
+        {
+            using (var ctx = new DataContext(dbName))
+            {
+                ctx.Remove(del);
                 ctx.SaveChanges();
             }
         }
         ///**********************************Account Master***********************************
         ///***********************************************************************************
-        public List<listaccounts> Listaccounts()
+        public List<cuentascontables> Listaccounts()
         {
             using (var context = new DataContext(dbName))
-                return context.cuentascontables.Select(s => new listaccounts
-                {
-                    idcuenta = s.idcategoria,
-                    descripcion = s.descripcion
-                }).ToList();
+                return context.cuentascontables.ToList();
         }
         public cuentascontables GetDataAccount(int idcuenta)
         {
@@ -74,25 +79,46 @@ namespace SistemaContableWeb.Lib.Class
         {
             using (var context = new DataContext(dbName))
             {
+                var currDate = DateTime.Now;
+
+                add.fechacreacion = currDate;
+                add.fechamodificacion = currDate;
+
                 context.Add(add);
                 context.SaveChanges();
             }
         }
+
         public void EditAccount(cuentascontables edit)
         {
             using (var context = new DataContext(dbName))
             {
-                var upd = context.cuentascontables.Find(edit.idcuenta);
-                upd.descripcion = edit.descripcion;
-                upd.idcategoria = edit.idcategoria;
-                upd.tipocotabilizacion = edit.tipocotabilizacion;
-                upd.tiposaldo = edit.tiposaldo;
-                upd.IdMoneda = edit.IdMoneda;
-                upd.usuario = edit.usuario;
-                context.Update(upd);
+                edit.fechamodificacion = DateTime.Now;
+                context.Update(edit);
                 context.SaveChanges();
             }
         }
+
+        public void DeleteAccount(cuentascontables del)
+        {
+            using (var context = new DataContext(dbName))
+            {
+                context.Remove(del);
+                context.SaveChanges();
+            }
+        }
+
+        public dynamic SearchAccounts(string term)
+        {
+            using (var context = new DataContext(dbName))
+            {
+                return context.cuentascontables
+                    .Where(x => x.cuenta.Contains(term) || x.descripcion.Contains(term))
+                    .Select(x => new { id = x.idcuenta, value = $"{x.cuenta} {x.descripcion}", data = x })
+                    .ToList();
+            }
+        }
+
 
         //*******************************************PERIODOS FISCALES********************************
         //*************************************************************************************************

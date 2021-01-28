@@ -16,7 +16,7 @@ import {
     DeleteOutlined
 } from "@ant-design/icons";
 import User from "models/User";
-import ManageAccounts from "./modals/ManageAccounts";
+import LedgerEntry from "./modals/LedgerEntry";
 
 const { confirm } = Modal;
 
@@ -67,7 +67,7 @@ export default (props: any) => {
             render: (record: any) => (
                 <Button.Group>
                     <Button icon={<EditOutlined translate />} type={'primary'}>Acción 1</Button>
-                    <Button icon={<DeleteOutlined translate />} type={'danger'}>Acción 2</Button>
+                    <Button icon={<DeleteOutlined translate />} danger>Acción 2</Button>
                 </Button.Group>
             ),
         },
@@ -136,7 +136,7 @@ export default (props: any) => {
                 />
             </div>
 
-            <ManageAccounts visible={visible} close={toggleModal} data={data} />
+            <LedgerEntry visible={visible} close={toggleModal} />
         </>
     );
 };

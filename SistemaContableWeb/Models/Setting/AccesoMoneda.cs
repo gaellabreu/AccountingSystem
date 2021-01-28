@@ -11,13 +11,8 @@ namespace SistemaContableWeb.Models.Setting
     {
         [Key]
         public int id { get; set; }
-        [Required]
         public int IDMonedaAcc { get; set; }
-        [Required]
         public int IdEmpresa { get; set; }
-        [Column(TypeName = "varchar(50)")]
         public string UsuarioModif { get; set; }
-        public DateTime fechaCreacion = DateTime.Now.Date;
-        public DateTime fechaModifi = DateTime.Now.Date;
     }
 }

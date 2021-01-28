@@ -15,7 +15,7 @@ namespace SistemaContableWeb.Models.Financial
         public decimal tasa { get; set; }
         public string descripcion { get; set; }
         public string IdMoneda { get; set; }
-        public int tipo { get; set; }
+        public int origendocumento { get; set; }
         public string documento { get; set; }
         public decimal credito { get; set; }
         public decimal debito { get; set; }

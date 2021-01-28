@@ -13,14 +13,11 @@ namespace SistemaContableWeb.Models.Financial
         public string cuenta { get; set; }
         public string descripcion { get; set; }
         public int idcategoria { get; set; }
-        public bool tipocotabilizacion { get; set; }
-        public bool tiposaldo { get; set; }
-        public string IdMoneda { get; set; }
+        public int tipocontabilizacion { get; set; }
+        public int tiposaldo { get; set; }
+        public int IdMoneda { get; set; }
         public string usuario { get; set; }
-
-        public DateTime fechacreacion = DateTime.Now.Date;
-        public DateTime fechamodificacion = DateTime.Now.Date;
-
-
+        public DateTime fechacreacion { get; set; }
+        public DateTime fechamodificacion { get; set; }
     }
 }
