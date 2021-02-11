@@ -304,7 +304,22 @@ namespace SistemaContableWeb.Controllers
             try
             {
                 var idEmpresa = empresa == 0? Convert.ToInt32(HttpContext.Session.GetString("idEmpresa")) : empresa;
-                var list = setting.ListAssignedCurrency(idEmpresa);
+                var value = setting.ListAssignedCurrency(idEmpresa);
+                return Ok(value);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("api/setting/ListCompanyAssignedCurrency")]
+        [HttpGet]
+        public IActionResult ListCompanyAssignedCurrency()
+        {
+            try
+            {
+                var list = setting.ListCompanyAssignedCurrency();
                 return Ok(list);
             }
             catch (Exception ex)

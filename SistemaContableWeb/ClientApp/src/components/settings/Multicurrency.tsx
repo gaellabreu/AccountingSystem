@@ -155,7 +155,7 @@ export default () => {
       <div
         className="site-layout-background"
         style={{ padding: 12, minHeight: "50%", maxHeight: "50%" }}>
-        <Table size={"small"} dataSource={currencys} columns={columns} />
+        <Table rowKey={(currency: Currency) => currency.id} size={"small"} dataSource={currencys} columns={columns} />
       </div>
 
       <ManageCurrency visible={show} close={toggleModal} data={data} />

@@ -3,19 +3,21 @@ import AuthenticatedUser from 'models/AuthenticatedUser';
 import Company from 'models/Company';
 import Currency from 'models/Currency';
 import DocumentType from 'models/DocumentType';
-import { SET_ACCOUNTS, SET_COMPANIES, SET_CURRENCIES, SET_DOCUMENT_TYPE } from './types';
+import { SET_ACCOUNTS, SET_COMPANIES, SET_CURRENCIES, SET_DEFAULT_CURRENCY, SET_DOCUMENT_TYPE } from './types';
 
 interface GeneralProps {
     companies: Array<Company>,
     currencies: Array<Currency>,
     documentTypes: Array<DocumentType>,
-    accounts: Array<Account>
+    accounts: Array<Account>,
+    defaultCurrency: number
 }
 const INITIAL_STATE: GeneralProps = {
     companies: Array<Company>(),
     currencies: Array<Currency>(),
     documentTypes: Array<DocumentType>(),
-    accounts: Array<Account>()
+    accounts: Array<Account>(),
+    defaultCurrency: 0
 };
 
 export default (state: GeneralProps = INITIAL_STATE, action: any) => {
@@ -34,6 +36,11 @@ export default (state: GeneralProps = INITIAL_STATE, action: any) => {
         }
         case SET_ACCOUNTS: {
             state.accounts = action.payload
+            return state
+        }
+        case SET_DEFAULT_CURRENCY: {
+            console.log('payload:', action.payload)
+            state.defaultCurrency = action.payload
             return state
         }
         default: return state;

@@ -13,6 +13,7 @@ export const GET_CURRENCIES = '/setting/listcurrency'
 export const ASSIGN_CURRENCY = '/setting/assigncurrency'
 export const REMOVE_ASSIGNED_CURRENCY = '/setting/removeassignedcurrency'
 export const LIST_ASSIGNED_CURRENCY = 'setting/listassignedcurrency'
+export const LIST_COMPANY_ASSIGNED_CURRENCY = 'setting/listcompanyassignedcurrency'
 
 export const GET_COMPANIES = '/setting/listcompany'
 export const ADD_COMPANY = '/setting/addcompany'

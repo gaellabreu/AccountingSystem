@@ -19,7 +19,7 @@ import Login from './components/login/'
 import API, { handleError } from 'utils/API';
 import { AxiosError } from 'axios';
 import Accounts from 'components/accounting';
-import { getAccounts, getCompanies, getCurrencies, getDocumentTypes } from 'store/general/action';
+import { getAccounts, getCompanies, getCurrencies, getDefaultCurrency, getDocumentTypes } from 'store/general/action';
 
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -40,19 +40,11 @@ export default () => {
 
     const initGeneralData = () => {
         dispatch(getCompanies())
-        dispatch(getCurrencies())
+        dispatch(getCurrencies())   
         dispatch(getDocumentTypes())
         dispatch(getAccounts())
+        dispatch(getDefaultCurrency())
     }
-
-    // useEffect(() => {
-    //     user.username ? history.push('/setting') : history.push('/')
-    // }, [])
-
-
-    useEffect(() => {
-        // isLogged()
-    }, [])
 
     let isLogin = useRouteMatch("/");
 
@@ -61,12 +53,6 @@ export default () => {
     const logout = () => API.post('setting/logout')
         .then(() => history.push('/'))
         .catch(handleError)
-
-    // const isLogged = () => API.get('setting/checklogin')
-    //     .then(() => history.push('/setting'))
-    //     .catch((err: AxiosError) => {
-    //         err.request?.status == 401 && history.push('/')
-    //     })
 
     return isLogin?.isExact ? <Route exact path={'/'}> <Login /> </Route> : <>
         <Layout style={{ minHeight: '100vh' }}>

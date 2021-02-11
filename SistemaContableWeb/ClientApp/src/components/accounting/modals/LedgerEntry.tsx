@@ -75,36 +75,37 @@ export default (props: any) => {
     const { general } = useSelector((state: any) => state)
 
     useEffect(() => {
-        setCurrentEntry({ ...new EntryDetail() })
+        console.log(general)
+    }, [general])
+
+    useEffect(() => {
+        setCurrentEntry({ ...new EntryDetail(), ...{ cuentaId: currentEntry.cuentaId, cuenta: currentEntry.cuenta, descripcion: currentEntry.descripcion } })
     }, [data])
 
-    const onAccountSelected = (value: any, option: any) => {
-        console.log(value, option)
-        setCurrentEntry({ ...currentEntry, ...{ cuentaId: option.id, cuenta: option.data.cuenta, descripcion: option.data.descripcion } })
-    }
+    const onAccountSelected = (value: any, option: any) => setCurrentEntry({ ...currentEntry, ...{ cuentaId: option.id, cuenta: option.data.cuenta, descripcion: option.data.descripcion } })
     const onDetailChange = (e: any) => setCurrentEntry({ ...currentEntry, ...{ [e.target.name]: e.target.value } })
 
-    const onDecimalChange = (e: any) => {
-        setCurrentEntry({ ...currentEntry, ...{ [e.target.name]: e.target.value } })
-    }
+    const onDecimalChange = (e: any) => setCurrentEntry({ ...currentEntry, ...{ [e.target.name]: e.target.value } })
 
-    const onAccountSearch = async (value: string) => {
-        API.get(`financial/searchaccounts?term=${value}`)
-            .then((response: AxiosResponse) => {
-                console.log(response.data)
-                setAccounts([...response.data])
-            })
-            .catch(handleError)
-    }
+    const onAccountSearch = async (value: string) => API.get(`financial/searchaccounts?term=${value}`)
+        .then((response: AxiosResponse) => setAccounts([...response.data]))
+        .catch(handleError)
 
     const insertDetail = () => {
         if (!currentEntry.cuentaId) {
-            notification.warn({ message: 'Debe ingresar una cuenta' })
+            notification.warn({ message: 'Debe ingresar una cuenta.' })
             return
         }
 
+        console.log(currentEntry.debito, currentEntry.credito)
+
         if (isNaN(Number.parseFloat(currentEntry.debito)) || isNaN(Number.parseFloat(currentEntry.credito))) {
-            notification.warn({ message: 'Debe ingresar valores correctos para débito y crédito' })
+            notification.warn({ message: 'Debe ingresar valores correctos para débito y crédito.' })
+            return
+        }
+
+        if ((!isNaN(Number.parseFloat(currentEntry.debito)) && Number.parseFloat(currentEntry.debito) == 0) && (!isNaN(Number.parseFloat(currentEntry.credito)) && Number.parseFloat(currentEntry.credito) == 0)) {
+            notification.warn({ message: 'Débito y crédito no pueden ser cero.' })
             return
         }
 
@@ -117,7 +118,7 @@ export default (props: any) => {
             _key = Math.max(...keyArray)
         }
 
-        currentEntry.key = _key.toString()
+        currentEntry.key = (_key + 1).toString()
 
         setData([...data, ...[currentEntry]])
     }
@@ -129,7 +130,6 @@ export default (props: any) => {
     };
 
     const edit = (record: Partial<EntryDetail> & { key: React.Key }) => {
-        console.log(record)
         form.setFieldsValue({ ...record });
         setEditingKey(record.key);
     };
@@ -137,8 +137,6 @@ export default (props: any) => {
     const save = async (key: React.Key) => {
         try {
             const row = (await form.validateFields()) as EntryDetail;
-
-            console.log(row)
 
             if (isNaN(Number.parseFloat(row.debito)) || isNaN(Number.parseFloat(row.credito))) {
                 notification.warn({ message: 'Debe ingresar valores correctos para débito y crédito' })
@@ -167,6 +165,12 @@ export default (props: any) => {
             console.log('Validate Failed:', errInfo);
         }
     };
+
+    const remove = (record: EntryDetail) => {
+        const idx = data.findIndex((x: EntryDetail) => x.key == record.key)
+        data.splice(idx, 1)
+        setData([...data])
+    }
 
     const columns = [
         {
@@ -197,7 +201,7 @@ export default (props: any) => {
             dataIndex: "credito",
             key: "credito",
             editable: true,
-            align: 'right' as  'right'
+            align: 'right' as 'right'
         },
         {
             title: 'Acción',
@@ -218,7 +222,7 @@ export default (props: any) => {
                             <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)} style={{ marginRight: 8 }}>
                                 Editar
                             </Typography.Link>
-                            <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
+                            <Typography.Link disabled={editingKey !== ''} onClick={() => remove(record)}>
                                 Borrar
                             </Typography.Link>
                         </span>
@@ -248,9 +252,9 @@ export default (props: any) => {
         visible={props.visible}
         onCancel={props.close}
         footer={[
-            <Button danger>Cancelar</Button>,
-            <Button type={'primary'}>Contabilizar</Button>,
-            <Button type={'dashed'}>Guardar</Button>
+            <Button key={0} danger>Cancelar</Button>,
+            <Button key={1} type={'primary'}>Contabilizar</Button>,
+            <Button key={2} type={'dashed'}>Guardar</Button>
         ]}
         title={'Entrada de transacción contable'}>
         <Divider orientation={'left'}>Encabezado</Divider>
@@ -273,7 +277,7 @@ export default (props: any) => {
                 </Xselect>
             </Col>
             <Col span={12}>
-                <Xselect aria-label={'Moneda'}>
+                <Xselect aria-label={'Moneda'} value={general.defaultCurrency}>
                     {general.currencies.map((x: Currency, idx: number) => <Select.Option key={idx} value={x.id}>{x.descripcion}</Select.Option>)}
                 </Xselect>
             </Col>
@@ -337,7 +341,7 @@ export default (props: any) => {
                         cell: EditableCell
                     }
                 }}
-                rowKey={record => record.id}
+                rowKey={record => record.key}
                 size={"small"}
                 dataSource={data}
                 bordered
@@ -348,7 +352,6 @@ export default (props: any) => {
                     const totalDebit = data.map((detail: EntryDetail) => detail.debito).reduce((acum: number, curr: any) => acum + Number.parseFloat(curr), 0.0)
                     const totalCredit = data.map((detail: EntryDetail) => detail.credito).reduce((acum: number, curr: any) => acum + Number.parseFloat(curr), 0.0)
 
-                    console.log(totalDebit, totalCredit)
                     return <>
                         <Table.Summary.Row>
                             <Table.Summary.Cell colSpan={2} index={3} />
@@ -356,10 +359,10 @@ export default (props: any) => {
                                 <Typography.Text strong>Total</Typography.Text>
                             </Table.Summary.Cell>
                             <Table.Summary.Cell index={1} align={'right'}>
-                                <Text strong style={{ fontSize: '18px' }} type={(totalDebit - totalCredit) != 0 ? 'danger' : 'success'}>{totalDebit.toFixed(2)}</Text>
+                                <Tag style={{ fontSize: '18px' }} color={(totalDebit - totalCredit) != 0 ? 'red' : 'success'}>{totalDebit.toFixed(2)}</Tag>
                             </Table.Summary.Cell>
                             <Table.Summary.Cell index={2} align={'right'}>
-                                <Text strong style={{ fontSize: '18px' }} type={(totalDebit - totalCredit) != 0 ? 'danger' : 'success'}>{totalCredit.toFixed(2)}</Text>
+                                <Tag style={{ fontSize: '18px' }} color={(totalDebit - totalCredit) != 0 ? 'red' : 'success'}>{totalCredit.toFixed(2)}</Tag>
                             </Table.Summary.Cell>
                         </Table.Summary.Row>
                     </>

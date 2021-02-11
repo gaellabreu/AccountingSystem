@@ -52,7 +52,11 @@ namespace SistemaContableWeb.Lib.Class
             db.SaveChanges();
         }
 
-        public bool isCurrencyAssigned(AccesoMoneda accesoMoneda) => db.AccesoMoneda.Any(x => x.IDMonedaAcc == accesoMoneda.IDMonedaAcc && x.IdEmpresa == accesoMoneda.IdEmpresa);
+        public bool isCurrencyAssigned(AccesoMoneda accesoMoneda)
+        {
+            var _x = db.AccesoMoneda.Where(x => x.IDMonedaAcc == accesoMoneda.IDMonedaAcc && x.IdEmpresa == accesoMoneda.IdEmpresa);
+            return db.AccesoMoneda.Any(x => x.IDMonedaAcc == accesoMoneda.IDMonedaAcc && x.IdEmpresa == accesoMoneda.IdEmpresa);
+        }
 
         public void KeyresetUser(Login login)
         {
@@ -148,7 +152,7 @@ namespace SistemaContableWeb.Lib.Class
         
         public MaestroMoneda GetCurrency(int id) => db.MaestroMoneda.Find(id);
         public List<MaestroMoneda> ListCurrency() => db.MaestroMoneda.Where(x => !x.Inactivo).ToList();
-        public List<AssinedCurrency> ListAssignedCurrency(int empresa) => db.MaestroMoneda
+        public AssinedCurrency ListAssignedCurrency(int empresa) => db.MaestroMoneda
                 .Where(x => !x.Inactivo)
                 .Join(db.AccesoMoneda, x => x.id, y => y.IDMonedaAcc, (x, y) => new
                 {
@@ -165,7 +169,27 @@ namespace SistemaContableWeb.Lib.Class
                     description = x.Descripcion,
                     company = y.nombre
                 })
-                .ToList();
+                .FirstOrDefault();
+
+        public List<AssinedCurrency> ListCompanyAssignedCurrency() => db.MaestroMoneda
+               .Where(x => !x.Inactivo)
+               .Join(db.AccesoMoneda, x => x.id, y => y.IDMonedaAcc, (x, y) => new
+               {
+                   x.Descripcion,
+                   x.id,
+                   x.IdMoneda,
+                   x.Inactivo,
+                   y.IdEmpresa
+               })
+               .Join(db.empresas, x => x.IdEmpresa, y => y.Id, (x, y) => new AssinedCurrency()
+               {
+                   id = x.id,
+                   currency = x.IdMoneda,
+                   inactive = x.Inactivo,
+                   description = x.Descripcion,
+                   company = y.nombre
+               })
+               .ToList();
 
         public void AddCurrency(MaestroMoneda Currency)
         {
