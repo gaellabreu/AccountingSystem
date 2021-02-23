@@ -235,7 +235,7 @@ namespace SistemaContableWeb.Controllers
         //**************************TASA CAMBIO*******************************
         [Route("api/Financial/GetExchangerate")]
         [HttpGet]
-        public IActionResult GetExchangerate(string idmoneda, DateTime docdate)
+        public IActionResult GetExchangerate(int idmoneda, DateTime docdate)
         {
             try
             {
@@ -249,7 +249,7 @@ namespace SistemaContableWeb.Controllers
         }
         [Route("api/Financial/ExistExchangerate")]
         [HttpGet]
-        public IActionResult ExistExchangerate(string idmoneda, DateTime docdate)
+        public IActionResult ExistExchangerate(int idmoneda, DateTime docdate)
         {
             try
             {
@@ -267,6 +267,7 @@ namespace SistemaContableWeb.Controllers
         {
             try
             {
+                add.fechaexpiracion = add.fecha.AddDays(1);
                 financial.Addrate(add);
                 return Ok();
             }

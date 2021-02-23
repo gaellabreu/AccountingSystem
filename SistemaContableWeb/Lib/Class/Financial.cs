@@ -210,20 +210,20 @@ namespace SistemaContableWeb.Lib.Class
         }
 
         //*************************************TASA DE CAMBIO***************************************
-        public decimal GetExchangerate(string idmoneda,DateTime docdate)
+        public float GetExchangerate(int idMoneda ,DateTime docdate)
         {
             using (var context = new DataContext(dbName))
             {
-                if (ExistExchangerate(idmoneda, docdate))
-                    return context.registrotasa.Where(x => x.IdMoneda == idmoneda && x.fecha == docdate.Date && x.fechaexpiracion >= docdate.Date).Select(s => s.tasa).First();
+                if (ExistExchangerate(idMoneda, docdate))
+                    return context.registrotasa.Where(x => x.IdMoneda == idMoneda && x.fecha == docdate.Date.Date && x.fechaexpiracion >= docdate.Date).Select(s => s.tasa).First();
                 else return 0;
             }
                 
         }
-        public bool ExistExchangerate(string idmoneda, DateTime docdate)
+        public bool ExistExchangerate(int idmoneda, DateTime docdate)
         {
             using (var context = new DataContext(dbName))
-                return context.registrotasa.Any(x => x.IdMoneda == idmoneda && x.fecha == docdate.Date && x.fechaexpiracion >= docdate.Date);
+                return context.registrotasa.Any(x => x.IdMoneda == idmoneda && x.fecha == docdate.Date.Date && x.fechaexpiracion >= docdate.Date);
         }
         public void Addrate(registrotasa add)
         {

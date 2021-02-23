@@ -10,9 +10,9 @@ namespace SistemaContableWeb.Models.Financial
     {
         [Key]
         public int id { get; set; }
-        public string IdMoneda { get; set; }
+        public int IdMoneda { get; set; }
         public DateTime fecha { get; set; }
-        public decimal tasa { get; set; }
+        public float tasa { get; set; }
         public DateTime fechaexpiracion { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-import { AutoComplete, Button, Col, DatePicker, Divider, Form, Input, InputNumber, Modal, notification, Popconfirm, Row, Select, Table, Tag, Typography } from 'antd'
+import { Button, Col, Divider, Form, Input, InputNumber, Modal, notification, Popconfirm, Row, Select, Table, Tag, Typography } from 'antd'
 import { Xinput } from 'components/common/Xinput'
 import { Xdatepicker } from 'components/common/Xdatepicker'
 import EntryDetail from 'models/EntryDetail'
@@ -8,11 +8,12 @@ import { Xselect } from 'components/common/Xselect'
 import { useSelector } from 'react-redux'
 import DocumentType from 'models/DocumentType'
 import Currency from 'models/Currency'
-import Account from 'models/Account'
 import API, { handleError } from 'utils/API'
 import { AxiosResponse } from 'axios'
 import { Xautocomplete } from 'components/common/Xautocomplete'
-import Text from 'antd/lib/typography/Text'
+import EntryHeader from 'models/EntryHeader'
+import { GET_EXCHANGE_RATE } from 'utils/Routes'
+import AddExchangeRate from './AddExchangeRate'
 
 interface Option {
     value: string,
@@ -66,8 +67,10 @@ const EditableCell: React.FC<EditableCellProps> = ({
 
 export default (props: any) => {
 
+    const [header, setHeader] = useState(new EntryHeader())
     const [data, setData] = useState(new Array<EntryDetail>())
     const [currentEntry, setCurrentEntry] = useState<EntryDetail>(new EntryDetail())
+    const [exchangerVisible, setExchangerVisible] = useState(false)
     const [accounts, setAccounts] = useState<Option[]>([])
     const [form] = Form.useForm();
     const [editingKey, setEditingKey] = useState('');
@@ -82,6 +85,11 @@ export default (props: any) => {
         setCurrentEntry({ ...new EntryDetail(), ...{ cuentaId: currentEntry.cuentaId, cuenta: currentEntry.cuenta, descripcion: currentEntry.descripcion } })
     }, [data])
 
+    const toggleExchanger = () => setExchangerVisible(!exchangerVisible)
+    const onHeaderChange = (e: any) => setHeader({ ...header, ...{ [e.target.name]: e.target.value } })
+    const onHeaderDateChange = (data: any, date: string) => setHeader({ ...header, ...{ fecha: date } })
+    const onHeaderSelectChange = (value: number, name: string) => setHeader({ ...header, ...{ [name]: value } })
+
     const onAccountSelected = (value: any, option: any) => setCurrentEntry({ ...currentEntry, ...{ cuentaId: option.id, cuenta: option.data.cuenta, descripcion: option.data.descripcion } })
     const onDetailChange = (e: any) => setCurrentEntry({ ...currentEntry, ...{ [e.target.name]: e.target.value } })
 
@@ -90,6 +98,24 @@ export default (props: any) => {
     const onAccountSearch = async (value: string) => API.get(`financial/searchaccounts?term=${value}`)
         .then((response: AxiosResponse) => setAccounts([...response.data]))
         .catch(handleError)
+
+
+    useEffect(() => {
+        if (header.moneda && header.moneda != general.defaultCurrency)
+            getExchangeRate()
+    }, [header.moneda])
+
+    const getExchangeRate = () => {
+        const { id } = general.currencies.find((c: Currency) => c.id == header.moneda) || 0
+        API.get(`${GET_EXCHANGE_RATE}?idmoneda=${id}&docdate=${header.fecha}`)
+            .then((response: AxiosResponse) => {
+                setHeader({ ...header, ...{ rate: response.data } })
+                if (!response.data) {
+                    notification.warning({ message: 'La tasa del día no ha sido registrada para esta moneda' })
+                    toggleExchanger()
+                }
+            })
+    }
 
     const insertDetail = () => {
         if (!currentEntry.cuentaId) {
@@ -261,23 +287,30 @@ export default (props: any) => {
         <Row justify={'space-between'} gutter={8}>
             <Col span={12}>
                 <Xinput
-                    aria-label={'Número de entrada'} />
+                    aria-label={'Número de entrada'}
+                    name={'entrada'}
+                    value={header.entrada}
+                    onChange={onHeaderChange}
+                />
+
             </Col>
             <Col span={12}>
                 <Xdatepicker
                     aria-label={'Fecha'}
                     defaultValue={moment()}
+                    value={moment(header.fecha)}
+                    onChange={onHeaderDateChange}
                     size={'small'} />
             </Col>
         </Row>
         <Row justify={'space-between'} gutter={8}>
             <Col span={12}>
-                <Xselect aria-label={'Documento de origen'}>
+                <Xselect aria-label={'Documento de origen'} value={header.origen} onSelect={(e: number) => onHeaderSelectChange(e, 'origen')}>
                     {general.documentTypes.map((x: DocumentType, idx: number) => <Select.Option key={idx} value={x.id}>{x.origendocumento}</Select.Option>)}
                 </Xselect>
             </Col>
             <Col span={12}>
-                <Xselect aria-label={'Moneda'} value={general.defaultCurrency}>
+                <Xselect aria-label={'Moneda'} value={header.moneda || general.defaultCurrency} onSelect={(e: number) => onHeaderSelectChange(e, 'moneda')}>
                     {general.currencies.map((x: Currency, idx: number) => <Select.Option key={idx} value={x.id}>{x.descripcion}</Select.Option>)}
                 </Xselect>
             </Col>
@@ -285,6 +318,8 @@ export default (props: any) => {
         <Row justify={'space-between'} gutter={8}>
             <Col span={24}>
                 <Xinput
+                    name={'referencia'}
+                    value={header.referencia}
                     aria-label={'Referencia'} />
             </Col>
         </Row>
@@ -328,7 +363,7 @@ export default (props: any) => {
             </Col>
             <Col span={4}>
                 <br />
-                <Button type={'primary'} size={'small'} onClick={insertDetail}>Insertar entrada</Button>
+                <Button disabled={!header.rate} type={'primary'} size={'small'} onClick={insertDetail}>Insertar entrada</Button>
             </Col>
         </Row>
 
@@ -369,6 +404,8 @@ export default (props: any) => {
                 }}
             />
         </Form>
+
+        <AddExchangeRate visible={exchangerVisible} close={toggleExchanger} moneda={header.moneda} date={header.fecha} />
 
     </Modal>
 }

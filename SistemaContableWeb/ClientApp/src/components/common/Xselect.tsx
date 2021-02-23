@@ -1,8 +1,8 @@
 import React from 'react'
-import { Tag } from "antd"
-import Select, { SelectProps } from 'antd/lib/select'
+import { Select, Tag } from "antd"
+// import Select, { SelectProps } from 'antd/lib/'
 
-export const Xselect = (props: SelectProps<[]>) => {
+export const Xselect = (props: any) => {
 
     return <div style={{ paddingBottom: '5px' }}>
         <Tag
